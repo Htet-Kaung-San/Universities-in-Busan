@@ -6,26 +6,11 @@
   <link rel="stylesheet" href="css/landing_page.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  
 </head>
 <body>
 
-  <header>
-  <div class="logo">
-    <svg viewBox="0 0 48 48"><path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"/></svg>
-    <h2>Busan Universities</h2>
-  </div>
-
-  <nav class="nav-container">
-    <div class="nav-links">
-      <a href="#">About us</a>
-      <a href="#">Resources</a>
-      <a href="#">Sign Up</a>
-      <a href="#">Log In</a>
-    </div>
-    <i class="fa fa-bars" id="menu-toggle"></i>
-  </nav>
-</header>
+  <header class="header-nav-bar"></header>
 
 
 <section class="hero-image-container">
@@ -96,23 +81,7 @@
 
 </div> 
 
-<div class="footer">
-  <div class="legal">
-    <div>About Us</div>
-    <div>Contact</div>
-    <div>Privacy Policy</div>
-    <div>Terms of Service</div>
-  </div>
-
-  <div class="social-medias">
-    <i class="fa-brands fa-facebook"></i>
-    <i class="fa-brands fa-instagram"></i>
-    <i class="fa-brands fa-x-twitter"></i>
-  </div>
-
-  <div id="rights" >@2025 Busan Universities. All rights reserved.</div>
-  
-</div>
+<div class="footer"></div>
 
 
   
@@ -141,15 +110,7 @@
   });
 });
 </script>
-<script>
-  const toggleBtn = document.getElementById('menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-</script>
-
-
+<script src="insert_nav_bar.js" defer></script>
+<script src="insert_footer.js" defer></script>
 </body>
 </html>
