@@ -1,0 +1,265 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #111418;
+}
+
+header {
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    z-index: 2;
+    padding: 1.4em 5em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    /* border: solid red 2px; */
+}
+
+
+.nav-container a {
+    /* margin: 0 12px; */
+    text-decoration: none;
+    color: #111418;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-container i {
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-container {
+
+        align-items: flex-end;
+    }
+
+    .nav-container a {
+        display: none;
+    }
+
+    .nav-container i {
+        display: block;
+    }
+}
+
+
+
+.hero-image-container {
+    margin-top: 100px;
+    margin-left: 5em;
+    margin-right: 5em;
+    height: 500px;
+}
+
+.hero-image {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5), 
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://international.pusan.ac.kr/sites/international/atchmnfl_mngr/imageSlide/4978/temp_1681286398829100.jpg");
+
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  border-radius: 10px;
+  
+
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 100%;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 0px;
+}
+
+.hero-text p {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.hero-text a {
+    margin-top: 20px;
+    background-color: #0c77f2;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.card-container {
+    position: relative;
+    top: -50px; 
+    height: 100px;
+    background-color: white;
+    padding: 20px 40px;
+    margin-left: 25em;
+    margin-right: 25em;
+    border-radius: 10px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icon-holder {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 200px;
+}
+
+.universities-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1350px;
+    /* border: red solid 2px; */
+    padding: 10px;
+    margin-top: -50px;
+}
+
+.universities-container h2 {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    /* border: solid red 2px; */
+}
+
+.search-container {
+    height: 76px;
+    width: 100%;    
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search-container-box {
+    width: 600px;
+    /* border: red solid 2px; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    /* height: 76px; */
+}
+
+.search-container-box i {
+    font-size: inherit;
+    margin: 0 5px 0 0;
+}
+
+.search-container-box input {
+    border: None;
+    outline: None;
+    font-size: inherit;
+    flex: 1;
+}
+
+.search-container-box button {
+    cursor: pointer;
+    background-color: #0c77f2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: inherit;
+}
+
+
+
+.university-container {
+    width: 31%;
+    margin-bottom: 30px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+
+}
+
+.university-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.university-container div {
+    padding: 10px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+    /* border: red solid 2px; */
+}
+
+.legal {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.social-medias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

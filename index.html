@@ -1,163 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <style>
-    @font-face {
-      font-family: 'Virgil';
-      src: url('./assets/fonts/Virgil.woff2') format('woff2');
-    }
-    /* Example CSS */
-body {
-  font-family: 'Poetsen One', cursive;
-}
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <title>Busan Universities</title>
+  <link rel="stylesheet" href="css/landing_page.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
-<body class=".poetsen-one-regular" >
-    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+<body>
 
+  <header>
 
-<div id="carouselExampleDark" class="carousel carousel-fade slide ">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <div class="logo">
+      <svg viewBox="0 0 48 48"><path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"/></svg>
+      <h2>Busan Universities</h2>
+    </div>
+    
+    <nav class="nav-container" >
+      <a href="#">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">Admissions</a>
+      <a href="#">Student Life</a>
+      <a href="#">Resources</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Log In</a>
+      <i class="fa fa-bars"></i>
+    </nav>
+
+  </header>
+
+<section class="hero-image-container">
+  <div class="hero-image">
+  <div class="hero-text">
+    <h1>Discover Your Future in Busan</h1>
+    <p>Explore the universities in Busan, South Korea, and find the perfect fit for your academic journey.</p>
+    <a>Explore</a>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="./assets/images/pnu_1.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img src="./assets/images/pnu_2.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/images/pnu_3.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
+</section>
 
+<div class="card-container">
+  <div class="icon-holder">
+    <i class="fas fa-camera"></i>
+    <div>10+ Registered Universities</div>
+  </div>
 
-<div class="container text-center">
-  <div class="row row-cols-2">
-    <div class="col d-flex justify-content-center my-4"><div class="card" style="width: 36rem;">
-  <img src="./assets/images/pnu_logo.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="icon-holder">
+    <i class="fas fa-camera"></i>
+    <div>>80% Employment Rate</div>
   </div>
-</div></div>
-    <div class="col d-flex justify-content-center my-4"><div class="card" style="width: 36rem;">
-  <img src="./assets/images/pnu_logo.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div></div>
-    <div class="col d-flex justify-content-center my-4"><div class="card" style="width: 36rem;">
-  <img src="./assets/images/pnu_logo.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div></div>
-    <div class="col d-flex justify-content-center my-4"><div class="card" style="width: 36rem;">
-  <img src="./assets/images/pnu_logo.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div></div>
+
+  <div class="icon-holder">
+    <i class="fas fa-camera"></i>
+    <div>Educational Services since 2011</div>
   </div>
 </div>
 
 
+<div class="universities-container">
+
+  <h2>Explore All Universities</h2>
+  <div class="search-container">
+    <div class="search-container-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search Universities...">
+      <button>Search</button>
+    </div>
+    
+  </div>
+<!--   
+  
+  <div class="university-container">
+    <img src="pnu_logo.png" alt="">
+    <div>Pusan National University</div>
+  </div>
+
+  <div class="university-container">
+    <img src="pnu_logo.png" alt="">
+    <div>Pusan National University</div>
+  </div>
+
+  <div class="university-container">
+    <img src="pnu_logo.png" alt="">
+    <div>Pusan National University</div>
+  </div>
+
+  <div class="university-container">
+    <img src="pnu_logo.png" alt="">
+    <div>Pusan National University</div>
+  </div> -->
 
 
+</div> 
 
+<div class="footer">
+  <div class="legal">
+    <div>About Us</div>
+    <div>Contact</div>
+    <div>Privacy Policy</div>
+    <div>Terms of Service</div>
+  </div>
 
+  <div class="social-medias">
+    <i class="fa-brands fa-facebook"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-x-twitter"></i>
+  </div>
 
-<div class="container border-top py-3">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"> 
-    <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p> 
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap">
-      <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg> 
-    </a> 
-    <ul class="nav col-md-4 justify-content-end"> 
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li> 
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li> 
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li> 
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li> 
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li> 
-    </ul> 
-  </footer> 
+  <div id="rights" >@2025 Busan Universities. All rights reserved.</div>
+  
 </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-  </body>
+  
+
+
+
+<script src="js/universities.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector(".universities-container");
+
+  universities.forEach(university => {
+    const card = document.createElement("div");
+    card.classList.add("university-container");
+
+    const img = document.createElement("img");
+    img.src = university.image;
+    img.alt = university.name;
+
+    const name = document.createElement("div");
+    name.textContent = university.name;
+
+    card.appendChild(img);
+    card.appendChild(name);
+    container.appendChild(card);
+  });
+});
+</script>
+
+</body>
 </html>
