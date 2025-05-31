@@ -5,73 +5,66 @@
 }
 
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
     background-color: #ffffff;
     color: #111418;
+    /* height: 200vh; */
 }
 
 header {
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    background-color: #fff;
-    z-index: 2;
-    padding: 1.4em 5em;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    flex-wrap: wrap;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  z-index: 2;
+  padding: 1.3em 5em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  /* align-items: center; */
+  gap: 10px;
+  /* border: solid red 2px */
 }
 
 .logo svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
+
 .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    /* border: solid red 2px; */
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
+.nav-links {
+  display: flex;
+  gap: 1em;
+}
 
-.nav-container a {
-    /* margin: 0 12px; */
-    text-decoration: none;
-    color: #111418;
-    font-size: 16px;
-    font-weight: bold;
+.nav-links a {
+  text-decoration: none;
+  color: #111418;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .nav-container i {
-    display: none;
-    cursor: pointer;
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-    .nav-container {
 
-        align-items: flex-end;
-    }
-
-    .nav-container a {
-        display: none;
-    }
-
-    .nav-container i {
-        display: block;
-    }
-}
 
 
 
@@ -80,6 +73,7 @@ header {
     margin-left: 5em;
     margin-right: 5em;
     height: 500px;
+    /* border: solid red 2px; */
 }
 
 .hero-image {
@@ -103,6 +97,7 @@ header {
 .hero-text {
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   position: absolute;
   top: 50%;
@@ -134,13 +129,14 @@ header {
 }
 
 .card-container {
+    /* border: solid red 2px; */
+    width: 50%;
     position: relative;
     top: -50px; 
     height: 100px;
     background-color: white;
     padding: 20px 40px;
-    margin-left: 25em;
-    margin-right: 25em;
+    margin: 0 auto;
     border-radius: 10px;
     z-index: 1;
     display: flex;
@@ -153,7 +149,8 @@ header {
     display: flex;
     align-items: center;
     gap: 20px;
-    width: 200px;
+    width: 33%;
+    /* border: solid red 2px; */
 }
 
 .universities-container {
@@ -165,6 +162,8 @@ header {
     /* border: red solid 2px; */
     padding: 10px;
     margin-top: -50px;
+    flex-wrap: wrap;
+    /* border: solid red 2px; */
 }
 
 .universities-container h2 {
@@ -262,4 +261,64 @@ header {
     align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  /* header {
+    padding: 1em;
+  } */
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* .nav-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: red solid 2px;
+  } */
+
+  .nav-container i {
+    display: block;
+  }
+
+  .hero-image-container {
+    margin: 80px 0 0 0;
+  }
+
+  .hero-image {
+    border-radius: 0;
+  }
+
+  .hero-text h1 {
+    font-size: 29px;
+    font-weight: 900;
+    margin-bottom: 5px;
+  }
+
+  .icon-holder {
+    justify-content: center;
+  }
+  
+  .icon-holder div {
+    display: none;
+  }
+
+  .university-container {
+    width: 100%;
+  }
 }

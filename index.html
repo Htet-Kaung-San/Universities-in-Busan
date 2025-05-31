@@ -11,24 +11,22 @@
 <body>
 
   <header>
+  <div class="logo">
+    <svg viewBox="0 0 48 48"><path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"/></svg>
+    <h2>Busan Universities</h2>
+  </div>
 
-    <div class="logo">
-      <svg viewBox="0 0 48 48"><path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"/></svg>
-      <h2>Busan Universities</h2>
-    </div>
-    
-    <nav class="nav-container" >
-      <a href="#">Home</a>
-      <a href="#">Explore</a>
-      <a href="#">Admissions</a>
-      <a href="#">Student Life</a>
+  <nav class="nav-container">
+    <div class="nav-links">
+      <a href="#">About us</a>
       <a href="#">Resources</a>
       <a href="#">Sign Up</a>
       <a href="#">Log In</a>
-      <i class="fa fa-bars"></i>
-    </nav>
+    </div>
+    <i class="fa fa-bars" id="menu-toggle"></i>
+  </nav>
+</header>
 
-  </header>
 
 <section class="hero-image-container">
   <div class="hero-image">
@@ -40,7 +38,8 @@
 </div>
 </section>
 
-<div class="card-container">
+<div>
+  <div class="card-container">
   <div class="icon-holder">
     <i class="fas fa-camera"></i>
     <div>10+ Registered Universities</div>
@@ -55,7 +54,10 @@
     <i class="fas fa-camera"></i>
     <div>Educational Services since 2011</div>
   </div>
+  </div>
 </div>
+
+
 
 
 <div class="universities-container">
@@ -139,6 +141,15 @@
   });
 });
 </script>
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
 
 </body>
 </html>
