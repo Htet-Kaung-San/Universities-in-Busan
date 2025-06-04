@@ -145,17 +145,17 @@ header {
 .card-container {
     width: 50%;
     position: relative;
-    top: -50px; 
-    height: 100px;
+    /* top: -50px;  */
+    height: 130px;
     background-color: white;
     padding: 20px 40px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     border-radius: 10px;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .icon-holder {
@@ -164,6 +164,11 @@ header {
     gap: 20px;
     width: 33%;
 }
+
+.icon-holder i {
+  font-size: 24px;
+}
+
 
 .universities-container {
   display: grid;
@@ -182,29 +187,34 @@ header {
 }
 
 .search-container {
-    height: 76px;
+    height: 60px;
     width: 100%;    
     margin-bottom: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    /* border: solid red 2px */
 }
 
 .search-container-box {
     width: 600px;
+    height: 100%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 999px;
     padding: 10px;
     font-size: 20px;
+    /* border: solid red 2px */
+
 }
 
 .search-container-box i {
     font-size: inherit;
-    margin: 0 5px 0 0;
+    margin: 0 10px;
+    color: rgba(0, 0, 0, 0.6)
 }
 
 .search-container-box input {
@@ -214,15 +224,6 @@ header {
     flex: 1;
 }
 
-.search-container-box button {
-    cursor: pointer;
-    background-color: #020202;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    font-size: inherit;
-}
 
 
 
