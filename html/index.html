@@ -71,6 +71,80 @@ section {
   margin-top: 20px;
 }
 
+.intro-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-left: 5em;
+  margin-right: 5em;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  /* border: solid red 2px; */
+}
+
+.intro-container {
+  flex: 1;
+  min-width: 260px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.intro-container h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #1e293b;
+}
+
+.intro-container p {
+  font-size: 1.15rem;
+  color: #334155;
+  margin-bottom: 28px;
+}
+
+.intro-container a {
+  display: inline-block;
+  background: #202020;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.intro-container a:hover {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.intro-image {
+  flex: 1;
+
+  /* border: solid red 2px; */
+}
+
+.intro-image img {
+  width: 90%;
+  max-width: 90%;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 16px rgba(0,0,0,0.08); */
+}
+
+@media (max-width: 900px) {
+  .intro-flex {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .intro-image img {
+    width: 90vw;
+    max-width: 350px;
+  }
+}
   </style>
 </head>
 <body>
@@ -78,8 +152,19 @@ section {
 
   <header class="header-nav-bar"></header>
 
+  <section class="intro-flex">
+  <div class="intro-container">
+    <h1>Discover Your Future in Busan</h1>
+    <p>Explore the universities in Busan, South Korea, and find the perfect fit for your academic journey.</p>
+    <a href="#explore_all_universities">Explore</a>
+  </div>
+  <div class="intro-image">
+    <img src="../img/landing_page.png" alt="">
+  </div>
+</section>
 
-<section class="hero-image-container">
+
+<!-- <section class="hero-image-container">
   <div class="hero-image">
   <div class="hero-text">
     <h1>Discover Your Future in Busan</h1>
@@ -87,7 +172,7 @@ section {
     <a href="#explore_all_universities">Explore</a>
   </div>
 </div>
-</section>
+</section> -->
 
 <div>
   <div class="card-container">

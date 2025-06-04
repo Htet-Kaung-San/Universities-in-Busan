@@ -81,6 +81,7 @@ header {
     margin-left: 5em;
     margin-right: 5em;
     height: 500px;
+    /* border: solid red 2px; */
 }
 
 .hero-image {
@@ -111,7 +112,7 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .hero-text h1 {
