@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BNU Info Modal</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 2rem;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+.header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+h2 {
+  margin: 0;
+}
+
+section {
+  margin-top: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <button id="openModalBtn">View Busan National University Info</button>
+
+  <div id="bnuModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Busan_National_University_logo.svg/1280px-Busan_National_University_logo.svg.png" alt="BNU" class="logo">
+        <div>
+          <h2>Busan National University</h2>
+          <p>Busan, South Korea<br>Established in 1946</p>
+        </div>
+      </div>
+
+      <section>
+        <h3>Overview</h3>
+        <p>Busan National University (BNU) is one of the leading national universities in South Korea, known for its strong academic programs and research contributions. Located in Busan, the second-largest city in South Korea, BNU offers a wide range of undergraduate and graduate programs across various disciplines, including engineering, natural sciences, humanities, social sciences, and medicine. The university is committed to fostering innovation, research excellence, and global collaboration, attracting students and faculty from around the world.</p>
+      </section>
+
+      <section>
+        <h3>Academic Programs</h3>
+        <p>BNU offers a diverse range of academic programs, including undergraduate degrees, master’s degrees, and doctoral degrees. Some of the notable programs include engineering, natural sciences, humanities, social sciences, and medicine. The university also offers interdisciplinary programs and specialized courses to meet the evolving needs of students and the job market.</p>
+      </section>
+
+      <section>
+        <h3>Campus Life</h3>
+        <p>BNU provides a vibrant campus life with various student activities, clubs, and organizations. The university has modern facilities, including libraries, research centers, sports facilities, and student dormitories. Students can participate in cultural events, sports competitions, and academic seminars, fostering a sense of community and personal growth.</p>
+      </section>
+
+      <section>
+        <h3>Admissions</h3>
+        <p>Prospective students can apply to BNU through the university’s online application portal. The admission process typically involves submitting academic transcripts, standardized test scores, letters of recommendation, and a personal statement. International students may have additional requirements, such as language proficiency tests and visa documentation. The university offers scholarships and financial aid options to eligible students.</p>
+      </section>
+
+      <section>
+        <h3>Contact Information</h3>
+        <p>For inquiries and further information, you can contact BNU through their official website or by reaching out to their admissions office directly. The university's website provides detailed information about programs, admissions, and campus resources. You can also find contact information for specific departments and offices on the website.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script >
+    const modal = document.getElementById("bnuModal");
+    const btn = document.getElementById("openModalBtn");
+    const span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+    modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+    modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+  </script>
+</body>
+</html>

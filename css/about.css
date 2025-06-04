@@ -5,13 +5,17 @@
 }
 
 .container {
-    /* border: solid red 2px; */
-    width: 80%;
+    width: 60%;
     margin: 140px auto 0 ;
 }
 
 .container h2 {
     margin-bottom: 20px;
+}
+
+.container img {
+    display: block;
+    margin: 0 auto;
 }
 
 .container h3 {

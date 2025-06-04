@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link rel="stylesheet" href="../css/landing_page.css">
+
+    <link rel="stylesheet" href="../css/profile.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <header class="header-nav-bar"></header>
+
+    <div class="profile-img-container">
+        <img id="profile-img" src="../img/user_profiles/person_1.jpg" alt="profile_img">
+        <h2 id="profile-name">Sophia Lee</h2>
+        <div id="profile-role">Student at Busan National University</div>
+        <div id="profile-joined">Joined in 2021</div>
+    </div>
+
+    <div class="about-container">
+    <h2>About</h2>
+    <p>Sophia is a dedicated student at Busan National University, majoring in International Relations. She is passionate about
+global politics and diplomacy, actively participating in Model United Nations and international exchange programs. Sophia
+is also involved in various campus activities, including the debate club and the student council, where she advocates for
+student rights and welfare. In her free time, she enjoys exploring Busan's vibrant culture, hiking in the surrounding
+mountains, and volunteering at local community centers.</p>
+    </div>
+
+    <div class="contact-container">
+        <h2>Contact Information</h2>
+        <div class="contact-info-container">
+            <div>Email</div>
+            <div id="profile-email"></div>
+        </div>
+
+        <div class="contact-info-container">
+        <div>Phone</div>
+        <div>+82 10-1234-5678</div>
+        </div>
+
+        <div class="contact-info-container">
+
+        <div>Location</div>
+        <div>Busan, South Korea</div>
+        </div>
+    </div>
+
+        <div class="social-container">
+        <h2>Social Media</h2>
+        <div class="social-info-container">
+            <div>LinkedIn</div>
+            <div>linkedin.com/in/sophia-lee</div>
+        </div>
+
+        <div class="social-info-container">
+        <div>Instagram</div>
+        <div>instagram.com/sophia.lee</div>
+        </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+
+<script src="../js/insert_nav_bar.js" defer></script>
+<script src="../js/insert_footer.js" defer></script>
+<script>
+fetch('/api/me')
+  .then(res => res.json())
+  .then(data => {
+    if (data.loggedIn && data.user) {
+      let imgSrc = "../img/user_profiles/normal_user.png";
+      if (data.user.user_type === "university_personnel") {
+        imgSrc = "../img/user_profiles/university_personnel.png";
+      } else if (data.user.user_type === "admin") {
+        imgSrc = "../img/user_profiles/admin.png";
+      }
+      document.getElementById('profile-img').src = imgSrc;
+
+      if (data.user.fullname) document.getElementById('profile-name').textContent = data.user.fullname;
+      if (data.user.user_type) document.getElementById('profile-role').textContent = data.user.user_type.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+      if (data.user.email) document.getElementById('profile-email').textContent = data.user.email;
+    }
+  });
+</script>
+    
+</body>
+</html>

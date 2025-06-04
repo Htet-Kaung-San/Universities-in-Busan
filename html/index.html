@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Busan Universities</title>
+  <link rel="stylesheet" href="../css/landing_page.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+.header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-content .header .logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+h2 {
+  margin: 0;
+}
+
+section {
+  margin-top: 20px;
+}
+
+  </style>
+</head>
+<body>
+  
+
+  <header class="header-nav-bar"></header>
+
+
+<section class="hero-image-container">
+  <div class="hero-image">
+  <div class="hero-text">
+    <h1>Discover Your Future in Busan</h1>
+    <p>Explore the universities in Busan, South Korea, and find the perfect fit for your academic journey.</p>
+    <a href="#explore_all_universities">Explore</a>
+  </div>
+</div>
+</section>
+
+<div>
+  <div class="card-container">
+  <div class="icon-holder">
+<i class="fa-solid fa-building-columns"></i>
+    <div>10+ Registered Universities</div>
+  </div>
+
+  <div class="icon-holder">
+    <i class="fa-solid fa-briefcase"></i>
+    <div>80% Employment Rate</div>
+  </div>
+
+  <div class="icon-holder">
+<i class="fa-solid fa-handshake"></i>
+    <div>Educational Services since 2011</div>
+  </div>
+  </div>
+</div>
+
+
+
+  <div class="explore_all_universities_title">
+  <h2 id="explore_all_universities">Explore All Universities</h2>
+  </div>
+
+  <div class="search-container">
+    <div class="search-container-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search Universities...">
+      <button>Search</button>
+    </div>
+  </div>
+
+  <div class="universities-container">
+  </div>
+
+
+<div id="universityModal" class="modal">
+  <div class="modal-content">
+    <span class="close-university-modal close">&times;</span>
+    <div class="header">
+      <img id="uniModalLogo" class="logo" src="" alt="University Logo">
+      <div>
+        <h2 id="uniModalName"></h2>
+        <p id="uniModalLocation"></p>
+      </div>
+    </div>
+    <section>
+      <h3>Location Map</h3>
+      <iframe
+        id="uniModalMap"
+        width="100%"
+        height="250"
+        style="border:0; border-radius:8px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+    <section>
+      <h3>Description</h3>
+      <p id="uniModalDescription"></p>
+    </section>
+    <section>
+      <h3>Type</h3>
+      <p id="uniModalType"></p>
+    </section>
+    <section>
+      <h3>Specialties</h3>
+      <p id="uniModalSpecialties"></p>
+    </section>
+    <section>
+      <h3>Website</h3>
+      <p><a id="uniModalWebsite" href="#" target="_blank"></a></p>
+    </section>
+  </div>
+</div>
+
+
+
+
+<div class="footer"></div>
+
+
+
+
+
+
+<!-- <script src="js/universities.js"></script> -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".universities-container");
+    const searchInput = document.querySelector('.search-container-box input');
+    const searchButton = document.querySelector('.search-container-box button');
+    let universities = [];
+
+    function renderUniversities(list) {
+      container.innerHTML = '';
+      if (list.length === 0) {
+        container.innerHTML = "<p style='color:red;'>No universities found.</p>";
+        return;
+      }
+      list.forEach(university => {
+        const card = document.createElement("div");
+        card.classList.add("university-container");
+
+        const img = document.createElement("img");
+        img.src = university.logo ? `/uploads/${university.logo}` : (university.image || "default_university.png");
+        img.alt = university.name;
+
+        const name = document.createElement("div");
+        name.textContent = university.name;
+
+        card.appendChild(img);
+        card.appendChild(name);
+
+        // Add click event to show modal with details
+        card.addEventListener('click', function() {
+          window.location.href = `university.html?id=${university._id}`;
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    fetch('/api/universities')
+      .then(response => response.json())
+      .then(data => {
+        universities = data;
+        renderUniversities(universities);
+      })
+      .catch(err => {
+        container.innerHTML += "<p style='color:red;'>Failed to load universities.</p>";
+        console.error(err);
+      });
+
+    searchButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = universities.filter(u =>
+        u.name.toLowerCase().includes(query) ||
+        (u.location && u.location.toLowerCase().includes(query)) ||
+        (u.type && u.type.toLowerCase().includes(query)) ||
+        (u.description && u.description.toLowerCase().includes(query))
+      );
+      renderUniversities(filtered);
+    });
+
+    // Optional: Enable live search as you type
+    searchInput.addEventListener('input', function () {
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = universities.filter(u =>
+        u.name.toLowerCase().includes(query) ||
+        (u.location && u.location.toLowerCase().includes(query)) ||
+        (u.type && u.type.toLowerCase().includes(query)) ||
+        (u.description && u.description.toLowerCase().includes(query))
+      );
+      renderUniversities(filtered);
+    });
+
+    // Modal close logic
+    const uniModal = document.getElementById('universityModal');
+    const closeUniModal = document.querySelector('.close-university-modal');
+    if (closeUniModal) {
+      closeUniModal.onclick = function () {
+        uniModal.style.display = "none";
+      };
+    }
+    window.addEventListener('click', function(event) {
+      if (event.target === uniModal) {
+        uniModal.style.display = "none";
+      }
+    });
+  });
+</script>
+<script src="../js/insert_nav_bar.js" defer></script>
+<script src="../js/insert_footer.js" defer></script>
+</body>
+</html>

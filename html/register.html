@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+  <div class="register-wrapper">
+    <div class="register-image"></div>
+    <div class="register-form-container">
+  <h2>Create your account</h2>
+  <p>Join our community and find your university in Busan!</p>
+
+  <form id="registerForm" action="/register" method="POST">
+    <div class="input-container">
+      <input type="text" name="fullname" placeholder="Full Name" required />
+      <input type="email" id="email" name="email" placeholder="Email Address" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required />
+    </div>
+
+    <div id="error-message" style="color:red; margin-bottom:10px;"></div>
+    <div id="email-check" style="color:red; margin-bottom:10px;"></div>
+
+     <div class="dropdown-container">
+    <select id="user_type" name="user_type" required>
+      <option value="" disabled selected id="select_user_type">Select User Type</option>
+      <option value="university_personnel">University Personnel</option>
+      <option value="normal_user">Normal User</option>
+    </select>
+  </div>
+
+    <div class="checkbox-container">
+      <label><input type="checkbox" name="terms" required /> I agree to the terms and conditions</label>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <div class="login-link">
+    <p>Have an account? <a href="log_in.html">Sign in</a></p>
+  </div>
+</div>
+  </div>
+</body>
+<script>
+document.getElementById('email').addEventListener('blur', function() {
+  const email = this.value.trim();
+  const emailCheckDiv = document.getElementById('email-check');
+  emailCheckDiv.textContent = '';
+  if (!email) return;
+  fetch(`/check-email?email=${encodeURIComponent(email)}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.exists) {
+        emailCheckDiv.textContent = 'Email is already registered.';
+      }
+    });
+});
+
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+  const pw = document.getElementById('password').value;
+  const cpw = document.getElementById('confirm_password').value;
+  const errorDiv = document.getElementById('error-message');
+  const emailCheckDiv = document.getElementById('email-check');
+  errorDiv.textContent = '';
+
+  if (pw.length < 8) {
+    errorDiv.textContent = 'Password must be at least 8 characters long.';
+    e.preventDefault();
+    return;
+  }
+  if (pw !== cpw) {
+    errorDiv.textContent = 'Passwords do not match.';
+    e.preventDefault();
+    return;
+  }
+  if (emailCheckDiv.textContent) {
+    errorDiv.textContent = 'Please use a different email address.';
+    e.preventDefault();
+    return;
+  }
+});
+</script>
+</html>

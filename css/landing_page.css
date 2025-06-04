@@ -9,7 +9,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
     color: #111418;
-    /* height: 200vh; */
 }
 
 header {
@@ -25,13 +24,13 @@ header {
   padding: 1.3em 5em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   flex-wrap: wrap;
+
 }
 
 .logo {
   display: flex;
-  gap: 10px;
+  align-items: center;
   cursor: pointer;
-
 }
 
 .logo a {
@@ -41,22 +40,23 @@ header {
   color: black;
 }
 
-.logo svg {
+.logo img {
   width: 24px;
   height: 24px;
-  fill: currentColor;
+  margin-right: 10px;
+
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   gap: 1em;
+
 }
 
 .nav-links {
   display: flex;
   gap: 1em;
-  /* border: solid red 2px; */
 }
 
 .nav-links a {
@@ -81,7 +81,6 @@ header {
     margin-left: 5em;
     margin-right: 5em;
     height: 500px;
-    /* border: solid red 2px; */
 }
 
 .hero-image {
@@ -128,16 +127,21 @@ header {
 
 .hero-text a {
     margin-top: 20px;
-    background-color: #0c77f2;
+    background-color: #020202;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     font-weight: bold;
     text-decoration: none;
+    color: white;
+}
+
+.explore_all_universities_title {
+    text-align: center;
+    margin-bottom: 30px; 
 }
 
 .card-container {
-    /* border: solid red 2px; */
     width: 50%;
     position: relative;
     top: -50px; 
@@ -158,27 +162,22 @@ header {
     align-items: center;
     gap: 20px;
     width: 33%;
-    /* border: solid red 2px; */
 }
 
 .universities-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: 1350px;
-    /* border: red solid 2px; */
-    padding: 10px;
-    margin-top: -50px;
-    flex-wrap: wrap;
-    /* border: solid red 2px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 32px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: stretch;
 }
 
 .universities-container h2 {
     width: 100%;
     margin-bottom: 15px;
     text-align: center;
-    /* border: solid red 2px; */
 }
 
 .search-container {
@@ -192,7 +191,6 @@ header {
 
 .search-container-box {
     width: 600px;
-    /* border: red solid 2px; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     background-color: white;
     display: flex;
@@ -201,7 +199,6 @@ header {
     border-radius: 5px;
     padding: 10px;
     font-size: 20px;
-    /* height: 76px; */
 }
 
 .search-container-box i {
@@ -218,7 +215,7 @@ header {
 
 .search-container-box button {
     cursor: pointer;
-    background-color: #0c77f2;
+    background-color: #020202;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -229,17 +226,18 @@ header {
 
 
 .university-container {
-    width: 31%;
+    width: 100%;
+    max-width: 425px;
     margin-bottom: 30px;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     border-radius: 5px;
     overflow: hidden;
     text-align: center;
-
+    cursor: pointer;
 }
 
 .university-container img {
-    width: 100%;
+    width: 250px;
     height: 250px;
     object-fit: cover;
 }
@@ -254,7 +252,6 @@ header {
     justify-content: space-evenly;
     align-items: center;
     height: 200px;
-    /* border: red solid 2px; */
 }
 
 .legal {
@@ -272,9 +269,6 @@ header {
 }
 
 @media screen and (max-width: 768px) {
-  /* header {
-    padding: 1em;
-  } */
 
   .nav-links {
     display: none;
@@ -292,13 +286,6 @@ header {
     display: flex;
   }
 
-  /* .nav-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: red solid 2px;
-  } */
 
   .nav-container i {
     display: block;
@@ -328,5 +315,19 @@ header {
 
   .university-container {
     width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1325px) {
+  .universities-container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .universities-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
