@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="nav-links">
             <a href="about.html">About us</a>
             <a href="register.html" class="nav-register">Register</a>
-            <a href="log_in.html" class="nav-login">Log In</a>
+            <a href="login.html" class="nav-login">Log In</a>
             <a href="profile.html" class="nav-profile" style="display:none">Profile</a>
             <a href="#" class="nav-logout" style="display:none">Log Out</a>
         </div>
