@@ -4,117 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Register Your University</title>
-  <link rel="stylesheet" href="../css/landing_page.css">
-  <link rel="stylesheet" href="../css/register_university.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-
-    .container {
-      display: flex;
-      align-items: center;
-      max-width: 1000px;
-      width: 100%;
-      background-color: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      margin: 100px auto 0 ;
-
-    }
-
-    .image-side {
-      flex: 1;
-      height: 100%;
-    }
-
-    .image-side img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.2);
-
-    }
-
-    .form-side {
-      flex: 1;
-      padding: 40px;
-
-    }
-
-    .form-side h2 {
-      font-size: 24px;
-      margin-bottom: 30px;
-      font-weight: 600;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      font-size: 14px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #020202;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-
-
-    @media screen and (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .image-side {
-        height: 200px;
-      }
-
-      .form-side {
-        padding: 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../css/nav_bar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/register_university.css">
+  <script src="../js/insert_footer.js" defer></script>
+  <script src="../js/insert_nav_bar.js" defer></script>
+  <script src="../js/register_university.js" defer></script>
+  
 </head>
 <body>
 
   <header class="header-nav-bar"></header>
 
-
   <div class="container">
+
     <div class="image-side">
       <img src="img/register_university.png" alt="University Image" />
     </div>
+
     <div class="form-side">
+
       <h2>Register Your University</h2>
       <form id="registerForm" enctype="multipart/form-data" method="POST" action="/register-university">
+
         <input type="text" id="name" name="name" placeholder="University Name" required>
-
         <input type="url" id="website" name="website" placeholder="University Website" required>
-
         <input type="text" id="location" name="location" placeholder="Location" required>
-
-
         <input type="text" id="type" name="type" placeholder="University Type (e.g. Public, Private)" required>
-
-<input type="text" id="specialties" name="specialties" placeholder="Specialties (comma separated)" required>
-
-<textarea id="description" name="description" placeholder="University Description" rows="4" style="width:100%;padding:12px;margin-bottom:20px;border:1px solid #e2e8f0;border-radius:8px;font-size:14px;resize: none;" required></textarea>
+        <input type="text" id="specialties" name="specialties" placeholder="Specialties (comma separated)" required>
+        <textarea id="description" name="description" placeholder="University Description" rows="4" style="width:100%;padding:12px;margin-bottom:20px;border:1px solid #e2e8f0;border-radius:8px;font-size:14px;resize: none;" required></textarea>
 
         <label for="logo">University Logo Image:</label>
         <input type="file" id="logo" name="logo" accept="image/*" required style="margin-bottom:20px;">
@@ -123,23 +42,13 @@
         <input type="file" id="campus_photos" name="campus_photos" accept="image/*" multiple style="margin-bottom:20px;">
 
         <button type="submit">Register</button>
+
       </form>
       
     </div>
   </div>
+
   <div class="footer"></div>
-  <script src="../js/insert_footer.js" defer></script>
-  <script src="../js/insert_nav_bar.js" defer></script>
-  <script>
-document.getElementById('registerForm').addEventListener('submit', function(e) {
-  const campusPhotos = document.getElementById('campus_photos');
-  if (!campusPhotos.files || campusPhotos.files.length < 4) {
-    alert('Please upload at least 4 campus photos.');
-    e.preventDefault();
-    return false;
-  }
-});
-</script>
 
 </body>
 </html>

@@ -3,11 +3,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-      <link rel="stylesheet" href="../css/landing_page.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/nav_bar.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/profile.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <script src="../js/insert_nav_bar.js" defer></script>
+    <script src="../js/insert_footer.js" defer></script>
+    <script src="../js/profile.js" defer></script>
 </head>
 <body>
     <header class="header-nav-bar"></header>
@@ -63,27 +66,6 @@ mountains, and volunteering at local community centers.</p>
 
     <div class="footer"></div>
 
-<script src="../js/insert_nav_bar.js" defer></script>
-<script src="../js/insert_footer.js" defer></script>
-<script>
-fetch('/api/me')
-  .then(res => res.json())
-  .then(data => {
-    if (data.loggedIn && data.user) {
-      let imgSrc = "../img/user_profiles/normal_user.png";
-      if (data.user.user_type === "university_personnel") {
-        imgSrc = "../img/user_profiles/university_personnel.png";
-      } else if (data.user.user_type === "admin") {
-        imgSrc = "../img/user_profiles/admin.png";
-      }
-      document.getElementById('profile-img').src = imgSrc;
-
-      if (data.user.fullname) document.getElementById('profile-name').textContent = data.user.fullname;
-      if (data.user.user_type) document.getElementById('profile-role').textContent = data.user.user_type.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
-      if (data.user.email) document.getElementById('profile-email').textContent = data.user.email;
-    }
-  });
-</script>
     
 </body>
 </html>

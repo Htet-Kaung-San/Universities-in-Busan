@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="../css/login.css">
+  <script src="../js/login.js" defer></script>
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="login-image"></div>
+    <div class="login-form-container">
+      <h2>Welcome</h2>
+      <p>Login to continue your journey in Busan's university search!</p>
+
+      <div id="login-error"></div>
+
+      <form action="/login" method="POST">
+        <div class="input-container">
+          <input type="email" name="email" placeholder="Email Address" required />
+          <input type="password" name="password" placeholder="Password" required />
+        </div>
+
+        <div class="checkbox-container">
+          <label><input type="checkbox" name="remember" /> Remember me</label>
+          <a href="#">Forgot <span>Email</span> or <span>Password</span>?</a>
+        </div>
+
+        <button type="submit">Log In</button>
+      </form>
+      
+      <div class="register-link">
+        <p>Don't have an account? <a href="register.html">Create one</a></p>
+      </div>
+
+
+    </div>
+  </div>
+</body>
+</html>
