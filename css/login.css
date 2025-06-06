@@ -1,0 +1,140 @@
+@import url('base.css');
+
+body {
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-wrapper {
+    display: flex;
+    width: 800px;
+    max-width: 95%;
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.login-image {
+    width: 50%;
+    background: url('../img/welcome_back.png') center/cover no-repeat;
+}
+
+.login-form-container {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form-container h2 {
+    margin-bottom: 10px;
+    color: var(--black-color);
+}
+
+.login-form-container p {
+    margin-bottom: 30px;
+    color: var(--gray-color);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form-container input[type="email"],
+.login-form-container input[type="password"] {
+    padding: 12px;
+    border: var(--border);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--black-color);
+}
+
+.checkbox-container label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-color);
+}
+
+.checkbox-container a {
+    color: var(--black-color);
+    text-decoration: none;
+    cursor: default;
+}
+
+.checkbox-container a span {
+    text-decoration: underline;
+}
+
+.checkbox-container a span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-form-container button {
+    padding: 12px;
+    width: 100%;
+    background-color: var(--black-color);
+    color: var(--white-color);
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.login-form-container button:hover {
+    box-shadow: var(--button-shadow);
+}
+
+.register-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray-color);
+}
+
+.register-link a {
+    color: var(--black-color);
+    font-weight: 500;
+    margin-left: 5px;
+
+}
+
+#login-error {
+    color: var(--red-color);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .login-wrapper {
+    flex-direction: column;
+    }
+
+    .login-image {
+    display: none;
+    }
+
+    .login-form-container {
+    width: 100%;
+    padding: 30px;
+    }
+}

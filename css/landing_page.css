@@ -1,140 +1,60 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+@import url('base.css');
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #111418;
-}
-
-header {
-  top: 0;
-  left: 0;
+.intro-flex {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  background-color: #fff;
-  z-index: 2;
-  padding: 1.3em 5em;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  flex-wrap: wrap;
-
+  gap: 40px;
+  margin-left: 5em;
+  margin-right: 5em;
+  margin-top: 70px;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.logo a {
-  font-size: 23px;
-  text-decoration: none;
-  font-weight: bold;
-  color: black;
-}
-
-.logo img {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-
-}
-
-.nav-links {
-  display: flex;
-  gap: 1em;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #111418;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.nav-container i {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-
-
-
-
-.hero-image-container {
-    margin-top: 100px;
-    margin-left: 5em;
-    margin-right: 5em;
-    height: 500px;
-    /* border: solid red 2px; */
-}
-
-.hero-image {
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.5), 
-      rgba(0, 0, 0, 0.5)
-    ),
-    url("https://international.pusan.ac.kr/sites/international/atchmnfl_mngr/imageSlide/4978/temp_1681286398829100.jpg");
-
-  height: 100%;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  border-radius: 10px;
-  
-
-}
-
-.hero-text {
+.intro-container {
+  flex: 1;
+  min-width: 260px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  /* width: 100%; */
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.hero-text h1 {
-    font-size: 36px;
-    font-weight: 900;
-    margin-bottom: 0px;
+.intro-container h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: var(--black-color);
 }
 
-.hero-text p {
-    font-size: 16px;
-    margin-bottom: 0;
+.intro-container p {
+  font-size: 1.15rem;
+  color: var(--gray-color);
+  margin-bottom: 28px;
 }
 
-.hero-text a {
-    margin-top: 20px;
-    background-color: #020202;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
+.intro-container a {
+  display: inline-block;
+  background: var(--black-color);
+  color: var(--white-color);
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.intro-container a:hover {
+  box-shadow: var(--button-shadow);
+}
+
+.intro-image {
+  flex: 1;
+}
+
+.intro-image img {
+  width: 90%;
+  max-width: 90%;
+  border-radius: 12px;
 }
 
 .explore_all_universities_title {
@@ -145,9 +65,8 @@ header {
 .card-container {
     width: 50%;
     position: relative;
-    /* top: -50px;  */
     height: 130px;
-    background-color: white;
+    background-color: var(--white-color);
     padding: 20px 40px;
     margin: 0 auto 20px;
     border-radius: 10px;
@@ -155,7 +74,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 .icon-holder {
@@ -199,8 +118,8 @@ header {
 .search-container-box {
     width: 600px;
     height: 100%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    background-color: white;
+    box-shadow: var(--box-shadow);
+    background-color: var(--white-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -214,7 +133,7 @@ header {
 .search-container-box i {
     font-size: inherit;
     margin: 0 10px;
-    color: rgba(0, 0, 0, 0.6)
+    color: var(--gray-color);
 }
 
 .search-container-box input {
@@ -224,14 +143,11 @@ header {
     flex: 1;
 }
 
-
-
-
 .university-container {
     width: 100%;
     max-width: 425px;
     margin-bottom: 30px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: var(--box-shadow);
     border-radius: 5px;
     overflow: hidden;
     text-align: center;
@@ -248,77 +164,18 @@ header {
     padding: 10px;
 }
 
-.footer {
-    display: flex;
+@media (max-width: 900px) {
+  .intro-flex {
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 200px;
-}
-
-.legal {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.social-medias {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 20px;
-}
-
-@media screen and (max-width: 768px) {
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background: white;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
   }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-
-  .nav-container i {
-    display: block;
-  }
-
-  .hero-image-container {
-    margin: 80px 0 0 0;
-  }
-
-  .hero-image {
-    border-radius: 0;
-  }
-
-  .hero-text h1 {
-    font-size: 29px;
-    font-weight: 900;
-    margin-bottom: 5px;
-  }
-
-  .icon-holder {
-    justify-content: center;
-  }
-  
-  .icon-holder div {
-    display: none;
-  }
-
-  .university-container {
-    width: 100%;
+  .intro-image img {
+    width: 90vw;
+    max-width: 350px;
   }
 }
+
 
 @media (min-width: 769px) and (max-width: 1325px) {
   .universities-container {
@@ -327,9 +184,21 @@ header {
 }
 
 @media (max-width: 768px) {
+  .icon-holder {
+    justify-content: center;
+  }
+  
+  .icon-holder div {
+    display: none;
+  }
+
   .universities-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .university-container {
+    width: 100%;
   }
 }

@@ -1,0 +1,23 @@
+@import url('base.css');
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+}
+
+.legal {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.social-medias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

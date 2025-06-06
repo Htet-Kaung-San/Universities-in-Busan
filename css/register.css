@@ -1,147 +1,152 @@
-* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+@import url('base.css');
 
-    body {
-      background-color: #f3f4f6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+body {
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 
-    .register-wrapper {
-      display: flex;
-      width: 900px;
-      max-width: 95%;
-      background: white;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      overflow: hidden;
-    }
+.register-wrapper {
+  display: flex;
+  width: 900px;
+  max-width: 95%;
+  background: var(--white-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-    .register-image {
-      width: 50%;
-      background: url('../img/register.png') center/cover no-repeat;
-    }
+.register-image {
+  width: 50%;
+  background: url('../img/register.png') center/cover no-repeat;
+}
 
-    .register-form-container {
-      width: 50%;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+.register-form-container {
+  width: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    .register-form-container h2 {
-      margin-bottom: 10px;
-      color: #1f2937;
-    }
+.register-form-container h2 {
+  margin-bottom: 10px;
+  color: var(--black-color);
+}
 
-    .register-form-container p {
-      margin-bottom: 30px;
-      color: #4b5563;
-    }
+.register-form-container p {
+  margin-bottom: 30px;
+  color: var(--gray-color);
+}
 
-    .input-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-    .register-form-container input[type="text"],
-    .register-form-container input[type="email"],
-    .register-form-container input[type="password"] {
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 5px;
-      font-size: 14px;
-    }
+.register-form-container input[type="text"],
+.register-form-container input[type="email"],
+.register-form-container input[type="password"] {
+  padding: 12px;
+  border: var(--border);
+  border-radius: 5px;
+  font-size: 14px;
+}
 
-    .checkbox-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 20px 0;
-      font-size: 14px;
-    }
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 14px;
+}
 
-    input[type="checkbox"] {
-  accent-color: #000000;
+input[type="checkbox"] {
+accent-color: var(--black-color);
 }
 
 
-    .checkbox-container label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #374151;
-    }
-
-    .register-form-container button {
-      padding: 12px;
-      width: 100%;
-      background-color: #020202;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .register-form-container button:hover {
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .login-link {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #4b5563;
-    }
-
-    .login-link a {
-      color: #020202;
-      font-weight: 500;
-      margin-left: 5px;
-
-    }
-
-    .dropdown-container {
-  margin-top: 15px;
-  margin-bottom: 15px;
+.checkbox-container label {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--gray-color);
+}
+
+.register-form-container button {
+  padding: 12px;
+  width: 100%;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-size: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.register-form-container button:hover {
+  box-shadow: var(--button-shadow);
+}
+
+.login-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--gray-color);
+}
+
+.login-link a {
+  color: var(--black-color);
+  font-weight: 500;
+  margin-left: 5px;
+
+}
+
+.dropdown-container {
+margin-top: 15px;
+margin-bottom: 15px;
+display: flex;
+flex-direction: column;
 }
 
 .dropdown-container select {
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.2s;
+padding: 10px;
+border: var(--border);
+border-radius: 5px;
+font-size: 1rem;
+transition: border-color 0.2s;
 }
 
 .dropdown-container select:focus {
-  border-color: #020202;
-  outline: none;
+border-color: var(--black-color);
+outline: none;
 }
 
-    @media (max-width: 768px) {
-      .register-wrapper {
-        flex-direction: column;
-      }
+#error-message {
+  color: red;
+  margin-top: 10px;
+}
 
-      .register-image {
-        display: none;
-      }
+#email-check {
+  color: red;
+  margin-top: 10px;
+}
 
-      .register-form-container {
-        width: 100%;
-        padding: 30px;
-      }
-    }
+@media (max-width: 768px) {
+  .register-wrapper {
+    flex-direction: column;
+  }
+
+  .register-image {
+    display: none;
+  }
+
+  .register-form-container {
+    width: 100%;
+    padding: 30px;
+  }
+}

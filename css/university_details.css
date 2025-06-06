@@ -1,0 +1,133 @@
+
+
+.back-btn {
+    margin: 90px 0 0 160px;
+    padding: 8px 18px;
+    background: #202020;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: inline-block;
+}
+.uni-details-main {
+    max-width: 900px;
+    margin: 0 auto 0 auto;
+    padding: 0 24px 48px 24px;
+    background: none;
+}
+.uni-details-header {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 18px;
+}
+.uni-details-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin: 0;
+    flex-shrink: 0;
+}
+.uni-details-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.uni-details-header h1 {
+    font-size: 1.7rem;
+    color: #222;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+.uni-details-location {
+    color: #6b7280;
+    font-size: 0.75rem;
+    margin: 0;
+    font-weight: 400;
+}
+.uni-details-est {
+    color: #ffffff;
+    font-size: 0.98rem;
+    margin: 0;
+    font-weight: 400;
+}
+.uni-details-section {
+    margin-bottom: 32px;
+    text-align: left;
+}
+.uni-details-section h2 {
+    font-size: 1.18rem;
+    color: #222;
+    margin-bottom: 8px;
+    margin-top: 0;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+.uni-details-section p, .uni-details-section a {
+    font-size: 1.08rem;
+    color: #333;
+    margin: 0 0 8px 0;
+    text-decoration: none;
+    word-break: break-word;
+    line-height: 1.7;
+}
+.uni-details-section a {
+    color: #2563eb;
+}
+.uni-details-section a:hover {
+    text-decoration: underline;
+}
+.uni-details-map {
+    width: 100%;
+    min-height: 300px;
+    /* border: 1px solid #e2e8f0; */
+    border-radius: 10px;
+    margin-bottom: 32px;
+    margin-top: 8px;
+    display: block;
+}
+.uni-campus-photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+.campus-photo-img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+@media (max-width: 700px) {
+    .back-btn {
+    display: none;
+    }
+
+    .uni-details-main {
+    max-width: 98vw;
+    padding: 80px 2vw 32px 2vw;
+    }
+    .uni-details-header {
+    align-items: flex-start;
+    gap: 12px;
+    }
+    .uni-details-img {
+    width: 70px;
+    height: 70px;
+    }
+    .uni-details-header h1 {
+    font-size: 1.2rem;
+    }
+    .campus-photo-img {
+    width: 100%;
+    
+    }
+}
