@@ -174,13 +174,16 @@
     width: 90vw;
     max-width: 350px;
   }
+  .intro-container{
+    align-items: center;
+  }
 }
-
 
 @media (min-width: 769px) and (max-width: 1325px) {
   .universities-container {
     grid-template-columns: repeat(2, 1fr); 
   }
+
 }
 
 @media (max-width: 768px) {
@@ -190,6 +193,10 @@
   
   .icon-holder div {
     display: none;
+  }
+
+  .intro-container{
+    align-items: center;
   }
 
   .universities-container {
