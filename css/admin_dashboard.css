@@ -23,6 +23,8 @@
   list-style: none;
 }
 
+
+
 .sidebar nav ul li {
   margin: 15px 0;
   padding: 10px;
@@ -156,5 +158,14 @@ th {
 
   .stats {
     flex-direction: column;
+  }
+  
+  .sidebar nav ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar nav ul li {
+    text-align: center;
   }
 }
