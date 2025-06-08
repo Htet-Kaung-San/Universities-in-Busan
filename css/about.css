@@ -2,7 +2,7 @@
 
 .container {
     width: 60%;
-    margin: 140px auto 0 ;
+    margin: 100px auto 0 ;
 }
 
 .container h2 {
@@ -20,4 +20,14 @@
 
 .container div {
     margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+    .container {
+        text-align: center;
+    }
+
+    .container img {
+        width: 90vw;
+        max-width: 350px;
+    }
 }
