@@ -2,10 +2,10 @@
 
 body {
   background-color: var(--background-color);
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: center; */
+  /* min-height: 100vh; */
 }
 
 .register-wrapper {
@@ -16,6 +16,7 @@ body {
   box-shadow: var(--box-shadow);
   border-radius: 10px;
   overflow: hidden;
+  margin: 100px auto 0;
 }
 
 .register-image {
@@ -137,10 +138,6 @@ outline: none;
 }
 
 @media (max-width: 768px) {
-  .register-wrapper {
-    flex-direction: column;
-  }
-
   .register-image {
     display: none;
   }
@@ -149,4 +146,8 @@ outline: none;
     width: 100%;
     padding: 30px;
   }
+
+  .register-form-container h2,.register-form-container p {
+    text-align: center;
+}
 }
