@@ -9,11 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <nav class="nav-container">
         <div class="nav-links">
+            <a href="index.html">Home</a>
             <a href="about.html">About us</a>
             <a href="register.html" class="nav-register">Register</a>
             <a href="login.html" class="nav-login">Log In</a>
-            <a href="profile.html" class="nav-profile" style="display:none">Profile</a>
-            <a href="#" class="nav-logout" style="display:none">Log Out</a>
+        </div>
+        <div class="nav-profile-dropdown" style="display:none;">
+            <img src="img/user_profiles/normal_user.png" alt="Profile" class="nav-profile-avatar" id="nav-profile-avatar">
+            <div class="nav-profile-menu" style="display:none;">
+                <a href="profile.html">Profile</a>
+                <a href="admin_dashboard.html" class="nav-dashboard" style="display:none;">Dashboard</a>
+                <a href="register_university.html" class="nav-register-university" style="display:none;">Register a University</a>
+                <a href="#" class="nav-logout">Log Out</a>
+            </div>
         </div>
         <i class="fa fa-bars" id="menu-toggle"></i>
     </nav>
@@ -32,44 +40,20 @@ document.addEventListener("DOMContentLoaded", function () {
       if (data.loggedIn) {
         // Hide or remove Register/Log In buttons
         document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'none');
-        // Optionally show profile/logout
-        document.querySelector('.nav-profile').style.display = 'block';
-        document.querySelector('.nav-logout').style.display = 'block';
+        profileDropdown.style.display = 'flex';
 
-        // Insert Dashboard for admin
-        if (data.user && data.user.user_type === 'admin') {
-          // Insert Dashboard after About us
-          if (!document.querySelector('.nav-dashboard')) {
-            const aboutLink = document.querySelector('.nav-links a[href="about.html"]');
-            const dashboardLink = document.createElement('a');
-            dashboardLink.href = "admin_dashboard.html";
-            dashboardLink.className = "nav-dashboard";
-            dashboardLink.textContent = "Dashboard";
-            aboutLink.parentNode.insertBefore(dashboardLink, aboutLink.nextSibling);
-          } else {
-            document.querySelector('.nav-dashboard').style.display = 'block';
-          }
-        } else {
-          const dashboard = document.querySelector('.nav-dashboard');
-          if (dashboard) dashboard.style.display = 'none';
+        // Set avatar image based on user type
+        let imgSrc = "img/user_profiles/normal_user.png";
+        if (data.user.user_type === "university_personnel") imgSrc = "img/user_profiles/university_personnel.png";
+        if (data.user.user_type === "admin") imgSrc = "img/user_profiles/admin.png";
+        profileAvatar.src = imgSrc;
+
+        // Show Dashboard/Register a University if applicable
+        if (data.user.user_type === "admin") {
+          document.querySelector('.nav-dashboard').style.display = 'block';
         }
-
-        // Insert Register a University for university_personnel and admin
-        if (data.user && (data.user.user_type === 'university_personnel' || data.user.user_type === 'admin')) {
-          if (!document.querySelector('.nav-register-university')) {
-            // Insert after About us and (if present) after Dashboard
-            let insertAfter = document.querySelector('.nav-dashboard') || document.querySelector('.nav-links a[href="about.html"]');
-            const regUniLink = document.createElement('a');
-            regUniLink.href = "register_university.html";
-            regUniLink.className = "nav-register-university";
-            regUniLink.textContent = "Register a University";
-            insertAfter.parentNode.insertBefore(regUniLink, insertAfter.nextSibling);
-          } else {
-            document.querySelector('.nav-register-university').style.display = 'block';
-          }
-        } else {
-          const regUni = document.querySelector('.nav-register-university');
-          if (regUni) regUni.style.display = 'none';
+        if (["admin", "university_personnel"].includes(data.user.user_type)) {
+          document.querySelector('.nav-register-university').style.display = 'block';
         }
       } else {
         // Show Register/Log In, hide profile/logout
@@ -89,9 +73,23 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(() => {
           // After logout, show Register/Log In and hide Profile/Log Out
           document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'block');
-          document.querySelector('.nav-profile').style.display = 'none';
-          document.querySelector('.nav-logout').style.display = 'none';
+          document.querySelector('.nav-profile-dropdown').style.display = 'none';
           window.location.href = 'index.html'; // Optional: redirect to home
         });
     });
+
+    const profileDropdown = document.querySelector('.nav-profile-dropdown');
+    const profileAvatar = document.getElementById('nav-profile-avatar');
+    const profileMenu = document.querySelector('.nav-profile-menu');
+
+    if (profileAvatar) {
+      profileAvatar.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      // Hide menu when clicking outside
+      document.addEventListener('click', function() {
+        profileMenu.style.display = 'none';
+      });
+    }
 });
