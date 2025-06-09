@@ -38,6 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         universities = data;
         renderUniversities(universities);
+        // Update the registered universities count
+        document.getElementById('registered-universities-count').textContent =
+          universities.length + '+ Registered Institutions';
       })
       .catch(err => {
         container.innerHTML += "<p style='color:red;'>Failed to load universities.</p>";
