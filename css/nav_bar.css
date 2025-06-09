@@ -10,7 +10,7 @@
   width: 100%;
   background-color: var(--white-color);
   z-index: 2;
-  padding: 1.3em 5em;
+  padding: 1.3em 7vw;
   box-shadow: var(--box-shadow);
   flex-wrap: wrap;
 }
@@ -39,7 +39,6 @@
   display: flex;
   align-items: center;
   gap: 1em;
-
 }
 
 .nav-links {
@@ -48,10 +47,13 @@
 }
 
 .nav-links a {
+  display: flex;
   text-decoration: none;
   color: var(--black-color);
   font-size: 16px;
   font-weight: bold;
+  /* border: solid red 2px; */
+  align-items: center;
 }
 
 .nav-container i {
@@ -60,26 +62,66 @@
   cursor: pointer;
 }
 
+.nav-profile-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-profile-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #e2e8f0;
+}
+
+.nav-profile-menu {
+  display: none;
+  position: fixed;      /* Changed from absolute to fixed */
+  right: 0;             /* Stick to the right edge */
+  top: 86px;            /* Adjust to be just below your navbar */
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  min-width: 250px;
+  z-index: 1000;        /* Make sure it's above other elements */
+  flex-direction: column;
+  /* border: 2px solid red; */ /* for debugging */
+}
+
+.nav-profile-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #222;
+  text-decoration: none;
+  border-bottom: 1px solid #f1f1f1;
+  transition: background 0.2s;
+}
+
+.nav-profile-menu a:last-child {
+  border-bottom: none;
+}
+
+.nav-profile-menu a:hover {
+  background: #f5f5f5;
+}
+
 @media screen and (max-width: 768px) {
+
+  /* .header-nav-bar {
+  padding: 1.3em 2.5em;
+
+} */
 
   .nav-links {
     display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background: var(--white-color);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    box-shadow: var(--box-shadow);
   }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-
   .nav-container i {
-    display: block;
+    display: none;
+  }
+  .nav-profile-dropdown {
+    display: flex !important;
+    margin-left: auto;
   }
 }
