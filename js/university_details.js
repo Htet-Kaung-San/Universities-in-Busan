@@ -1,3 +1,26 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Get university ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const universityId = params.get('id');
+    if (!universityId) return;
+  
+    // Fetch user info to check favourites
+    fetch('/api/me')
+      .then(res => res.json())
+      .then(data => {
+        if (data.loggedIn && data.user && Array.isArray(data.user.favourites)) {
+          if (data.user.favourites.includes(universityId)) {
+            // Set star to filled
+            const star = document.querySelector('.toggle-star');
+            if (star) {
+              star.classList.remove('fa-regular');
+              star.classList.add('fa-solid');
+            }
+          }
+        }
+      });
+  });
+  
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   if (id) {
@@ -20,12 +43,16 @@
         }
         document.getElementById('university-details').innerHTML = `
           <div class="uni-details-header">
-            <img class="uni-details-img" src="${u.logo ? '/uploads/' + u.logo : (u.image || 'default_university.png')}" alt="${u.name}">
-            <div class="uni-details-title-group">
+            <div class="uni-details-image_title-group">
+              <img class="uni-details-img" src="${u.logo ? '/uploads/' + u.logo : (u.image || 'default_university.png')}" alt="${u.name}">
+              <div class="uni-details-title-group">
               <h1>${u.name}</h1>
               <div class="uni-details-location">${u.location || ''}</div>
               ${est}
             </div>
+            </div>
+            
+            <i class="fa-regular fa-star toggle-star" id="star" title="Add to Favourites"></i>
           </div>
           <div class="uni-details-section">
             <h2>Location Map</h2>
@@ -50,6 +77,15 @@
             <p>${u.description || ''}</p>
           </div>
         `;
+  
+        // After setting innerHTML for university-details
+        const star = document.getElementById('star');
+        if (star) {
+          star.addEventListener('click', function() {
+            this.classList.toggle('fa-regular');
+            this.classList.toggle('fa-solid');
+          });
+        }
       });
   } else {
     document.getElementById('university-details').textContent = "No university selected.";
