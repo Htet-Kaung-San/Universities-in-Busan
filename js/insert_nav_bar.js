@@ -17,7 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="nav-profile-dropdown" style="display:none;">
             <img src="img/user_profiles/normal_user.png" alt="Profile" class="nav-profile-avatar" id="nav-profile-avatar">
             <div class="nav-profile-menu" style="display:none;">
+                <a href="index.html" class="mobile-only">Home</a>
+                <a href="about.html" class="mobile-only">About us</a>
                 <a href="profile.html">Profile</a>
+                <a href="favourite_universities.html">Favourites</a>
                 <a href="admin_dashboard.html" class="nav-dashboard" style="display:none;">Dashboard</a>
                 <a href="register_university.html" class="nav-register-university" style="display:none;">Register a University</a>
                 <a href="#" class="nav-logout">Log Out</a>
@@ -31,16 +34,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector('.nav-links');
 
     toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
+      navLinks.classList.toggle('active');
+    });
 
   fetch('/api/me')
     .then(res => res.json())
     .then(data => {
       if (data.loggedIn) {
-        // Hide or remove Register/Log In buttons
+        // Hide nav links and hamburger menu on mobile
         document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'none');
-        profileDropdown.style.display = 'flex';
+        document.querySelector('.nav-profile-dropdown').style.display = 'flex';
+        header.classList.add('logged-in'); // <-- Add this line
 
         // Set avatar image based on user type
         let imgSrc = "img/user_profiles/normal_user.png";
@@ -56,14 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
           document.querySelector('.nav-register-university').style.display = 'block';
         }
       } else {
-        // Show Register/Log In, hide profile/logout
+        // Show nav links and hamburger menu
         document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'block');
-        document.querySelector('.nav-profile').style.display = 'none';
-        document.querySelector('.nav-logout').style.display = 'none';
-        const regUni = document.querySelector('.nav-register-university');
-        if (regUni) regUni.style.display = 'none';
-        const dashboard = document.querySelector('.nav-dashboard');
-        if (dashboard) dashboard.style.display = 'none';
+        document.querySelector('.nav-profile-dropdown').style.display = 'none';
+        header.classList.remove('logged-in'); // <-- Add this line
       }
     });
 
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (profileAvatar) {
       profileAvatar.addEventListener('click', function(e) {
         e.stopPropagation();
-        profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
+        profileMenu.style.display = profileMenu.style.display === 'flex' ? 'none' : 'flex';
       });
       // Hide menu when clicking outside
       document.addEventListener('click', function() {
