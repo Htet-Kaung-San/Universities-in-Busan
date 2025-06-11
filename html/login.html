@@ -5,22 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="../css/nav_bar.css">
+  <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/login.css">
+  <script src="../js/insert_nav_bar.js" defer></script>
+  <script src="../js/insert_footer.js" defer></script>
   <script src="../js/login.js" defer></script>
+  <script src="../js/password_show_logic.js" defer></script>
+
 </head>
 <body>
+  <header class="header-nav-bar"></header>
+
   <div class="login-wrapper">
     <div class="login-image"></div>
     <div class="login-form-container">
       <h2>Welcome</h2>
-      <p>Login to continue your journey in Busan's university search!</p>
+      <p>Login to continue your journey in Busan's universities!</p>
 
       <div id="login-error"></div>
 
-      <form action="/login" method="POST">
+      <form id="loginForm" action="/login" method="POST">
         <div class="input-container">
-          <input type="email" name="email" placeholder="Email Address" required />
-          <input type="password" name="password" placeholder="Password" required />
+          <input id="email" type="email" name="email" placeholder="Email Address" required />
+          <div class="password-container">
+            <input type="password" id="password" name="password" placeholder="Password" required />
+            <i class="fa fa-eye-slash toggle-password" data-target="password"></i>
+          </div>
         </div>
 
         <div class="checkbox-container">
@@ -34,9 +45,8 @@
       <div class="register-link">
         <p>Don't have an account? <a href="register.html">Create one</a></p>
       </div>
-
-
     </div>
   </div>
+  <div class="footer"></div>
 </body>
 </html>
