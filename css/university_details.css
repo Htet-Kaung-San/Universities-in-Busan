@@ -1,15 +1,10 @@
-
+@import url("base.css");
 
 .back-btn {
-    margin: 90px 0 0 160px;
-    padding: 8px 18px;
-    background: #202020;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
+    color: var(--black-color);
+    margin: 100px 0 0 170px;
     font-size: 24px;
     cursor: pointer;
-    transition: background 0.2s;
     display: inline-block;
 }
 .uni-details-main {
@@ -21,8 +16,33 @@
 .uni-details-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 28px;
     margin-bottom: 18px;
+}
+
+.uni-details-image_title-group {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.uni-details-header h1 {
+    font-size: 1.7rem;
+    color: #222;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+.uni-details-header i {
+    font-size: 1.7rem;
+    color: var(--black-color);
+    cursor: pointer;
+}
+
+.uni-details-header .fa-solid {
+    font-size: 1.7rem;
+    color: rgb(255, 225, 57);
+    cursor: pointer;
 }
 .uni-details-img {
     width: 90px;
@@ -38,13 +58,7 @@
     flex-direction: column;
     gap: 4px;
 }
-.uni-details-header h1 {
-    font-size: 1.7rem;
-    color: #222;
-    margin: 0;
-    font-weight: 600;
-    letter-spacing: -1px;
-}
+
 .uni-details-location {
     color: #6b7280;
     font-size: 0.75rem;
@@ -106,23 +120,32 @@
     border-radius: 10px;
     box-shadow: var(--box-shadow);
 }
-@media (max-width: 700px) {
+
+@media (max-width: 1400px) {
     .back-btn {
-    display: none;
+        display: none;
     }
+
+    .uni-details-main {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 700px) {
 
     .uni-details-main {
     max-width: 98vw;
     padding: 80px 2vw 32px 2vw;
+    margin-top: 25px;
     }
     .uni-details-header {
     align-items: flex-start;
     gap: 12px;
     }
-    .uni-details-img {
+    /* .uni-details-img {
     width: 70px;
     height: 70px;
-    }
+    } */
     .uni-details-header h1 {
     font-size: 1.2rem;
     }
