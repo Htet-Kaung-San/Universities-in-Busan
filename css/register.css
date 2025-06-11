@@ -21,7 +21,7 @@ body {
 
 .register-image {
   width: 50%;
-  background: url('../img/register.png') center/cover no-repeat;
+  background: url('../img/static/register.png') center/cover no-repeat;
 }
 
 .register-form-container {
@@ -119,12 +119,13 @@ padding: 10px;
 border: var(--border);
 border-radius: 5px;
 font-size: 1rem;
-transition: border-color 0.2s;
+transition: var(--border) 0.2s;
 }
 
 .dropdown-container select:focus {
 border-color: var(--black-color);
 outline: none;
+/* border: solid red 2px; */
 }
 
 #error-message {
@@ -135,6 +136,27 @@ outline: none;
 #email-check {
   color: red;
   margin-top: 10px;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  width: 100%;
+  padding-right: 40px; /* space for the icon */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: var(--black-color);
+  font-size: 14px;
+  z-index: 2;
 }
 
 @media (max-width: 768px) {
