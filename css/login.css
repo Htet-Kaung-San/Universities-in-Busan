@@ -2,25 +2,27 @@
 
 body {
     background-color: var(--background-color);
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 100vh; */
 }
 
 .login-wrapper {
     display: flex;
-    width: 800px;
+    width: 900px;
     max-width: 95%;
     background: var(--white-color);
     box-shadow: var(--box-shadow);
     border-radius: 10px;
     overflow: hidden;
+    margin: 100px auto 0;
+
 }
 
 .login-image {
     width: 50%;
-    background: url('../img/welcome_back.png') center/cover no-repeat;
+    background: url('../img/static/welcome_back.png') center/cover no-repeat;
 }
 
 .login-form-container {
@@ -48,7 +50,8 @@ body {
 }
 
 .login-form-container input[type="email"],
-.login-form-container input[type="password"] {
+.login-form-container input[type="password"],
+.login-form-container input[type="text"] {
     padding: 12px;
     border: var(--border);
     border-radius: 5px;
@@ -124,11 +127,28 @@ input[type="checkbox"] {
     margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-    .login-wrapper {
-    flex-direction: column;
-    }
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  width: 100%;
+  padding-right: 40px; /* space for the icon */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: var(--black-color);
+  font-size: 14px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
     .login-image {
     display: none;
     }
@@ -137,4 +157,8 @@ input[type="checkbox"] {
     width: 100%;
     padding: 30px;
     }
+
+    .login-form-container h2,.login-form-container p {
+    text-align: center;
+}
 }
