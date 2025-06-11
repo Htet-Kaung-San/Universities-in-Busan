@@ -21,19 +21,23 @@
 
 .sidebar nav ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 
 
-.sidebar nav ul li {
+.sidebar nav ul a {
   margin: 15px 0;
   padding: 10px;
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s;
+  text-decoration: none;
+  color: var(--black-color);
 }
 
-.sidebar nav ul li:hover,
+.sidebar nav ul a:hover,
 .sidebar nav ul .active {
   background-color: var(--background-color);
   font-weight: bold;
@@ -162,10 +166,11 @@ th {
   
   .sidebar nav ul {
     display: flex;
+    flex-direction: row;
     justify-content: center;
   }
 
-  .sidebar nav ul li {
+  .sidebar nav ul a {
     text-align: center;
   }
 }
