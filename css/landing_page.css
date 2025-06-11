@@ -181,14 +181,12 @@
   }
 }
 
+
 @media (min-width: 769px) and (max-width: 1000px) {
   .universities-container {
     grid-template-columns: repeat(2, 1fr);
   }
 
-}
-
-@media (min-width: 769px) and (max-width: 1000px) {
   .card-container {
     padding: 30px 30px;
     /* border: solid red 2px; */
