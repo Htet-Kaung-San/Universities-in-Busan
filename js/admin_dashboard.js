@@ -52,3 +52,41 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   loadUniversities();
 });
+
+document.addEventListener("DOMContentLoaded", async function () {
+  // University count
+  const uniRes = await fetch('/api/admin/universities/count');
+  const uniData = await uniRes.json();
+  document.getElementById('total-universities-count').textContent = uniData.count;
+
+  // User count (excluding admin)
+  const userRes = await fetch('/api/admin/users/count');
+  const userData = await userRes.json();
+  document.getElementById('total-users-count').textContent = userData.count;
+
+  // Fetch recent activities
+  const res = await fetch('/api/admin/activities');
+  const activities = await res.json();
+
+  const tbody = document.querySelector('.recent-activity table tbody');
+  if (!tbody) {
+    console.error("No <tbody> found in recent-activity table!");
+    return;
+  }
+  tbody.innerHTML = ""; // Clear previous rows before adding new ones
+
+  activities.forEach(act => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${act.activity}</td>
+      <td>
+        ${act.performedBy || ''}
+        ${act.userType ? ` <span style="color:gray;font-size:0.95em;">(${act.userType.replace('_', ' ')})</span>` : ''}
+      </td>
+      <td>${act.ip || ''}</td>
+      <td>${new Date(act.datetime).toLocaleString()}</td>
+      <td>${act.actionType}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+});
