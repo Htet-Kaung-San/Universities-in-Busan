@@ -71,17 +71,4 @@ document.addEventListener("DOMContentLoaded", function () {
       renderUniversities(filtered);
     });
 
-    // Modal close logic
-    const uniModal = document.getElementById('universityModal');
-    const closeUniModal = document.querySelector('.close-university-modal');
-    if (closeUniModal) {
-      closeUniModal.onclick = function () {
-        uniModal.style.display = "none";
-      };
-    }
-    window.addEventListener('click', function(event) {
-      if (event.target === uniModal) {
-        uniModal.style.display = "none";
-      }
-    });
   });
