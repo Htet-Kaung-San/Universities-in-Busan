@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a href="index.html" class="mobile-only">Home</a>
                 <a href="about.html" class="mobile-only">About us</a>
                 <a href="profile.html">Profile</a>
-                <a href="favourite_universities.html">Favourites</a>
+                <a href="favourites.html">Favourites</a>
                 <a href="admin_dashboard.html" class="nav-dashboard" style="display:none;">Dashboard</a>
                 <a href="register_university.html" class="nav-register-university" style="display:none;">Register a University</a>
                 <a href="#" class="nav-logout">Log Out</a>
