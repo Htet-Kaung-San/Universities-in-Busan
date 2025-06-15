@@ -5,13 +5,11 @@ document.addEventListener('click', function(e) {
     const uniId = params.get('id');
     if (!uniId) return;
 
-    // If fa-regular is present AFTER toggle, it's being "unstarred"
     star.classList.toggle('fa-regular');
     star.classList.toggle('fa-solid');
     const isUnstarred = star.classList.contains('fa-solid');
     console.log(isUnstarred);
     if (!isUnstarred) {
-      // Remove from favourites
       fetch('/api/favourites', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -22,7 +20,6 @@ document.addEventListener('click', function(e) {
         console.log(data.message);
       });
     } else {
-      // Add to favourites
       fetch('/api/favourites', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
