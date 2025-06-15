@@ -100,7 +100,6 @@
 .uni-details-map {
     width: 100%;
     min-height: 300px;
-    /* border: 1px solid #e2e8f0; */
     border-radius: 10px;
     margin-bottom: 32px;
     margin-top: 8px;
@@ -138,17 +137,16 @@
     padding: 80px 2vw 32px 2vw;
     margin-top: 25px;
     }
+
     .uni-details-header {
     align-items: flex-start;
     gap: 12px;
     }
-    /* .uni-details-img {
-    width: 70px;
-    height: 70px;
-    } */
+
     .uni-details-header h1 {
     font-size: 1.2rem;
     }
+    
     .campus-photo-img {
     width: 100%;
     
