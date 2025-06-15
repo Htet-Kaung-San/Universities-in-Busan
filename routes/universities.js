@@ -2,19 +2,19 @@ const express = require('express');
 const { ObjectId } = require('mongodb');
 const multer = require('multer');
 const path = require('path');
+const { upload } = require('../server');
 
 module.exports = (db) => {
   const router = express.Router();
-  const upload = multer({ dest: path.join(__dirname, '../uploads/') });
 
   router.post('/register-university', upload.fields([
     { name: 'logo', maxCount: 1 },
-    { name: 'campus_photos', maxCount: 5 }
+    { name: 'campus_photos', maxCount: 10 }
   ]), async (req, res) => {
     try {
       const { name, website, location, description, type, specialties } = req.body;
-      const logo = req.files['logo'] ? req.files['logo'][0].filename : null;
-      const campusPhotos = req.files['campus_photos'] ? req.files['campus_photos'].map(f => f.filename) : [];
+      const logo = req.files['logo'] ? req.files['logo'][0].location : null;
+      const campusPhotos = req.files['campus_photos'] ? req.files['campus_photos'].map(f => f.location) : [];
 
       let approved = false;
       if (req.session.user && req.session.user.user_type === 'admin') {

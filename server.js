@@ -3,7 +3,9 @@ const express = require('express'); // for hosting locally
 const bodyParser = require('body-parser'); // extracting the data from json when data is received
 const path = require('path'); // for locating static files
 const { MongoClient } = require('mongodb'); // for databse connection
-const multer = require('multer'); // for handling images uploaded by user
+const AWS = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 const session = require('express-session'); // lets app remember users
 
 const app = express();
@@ -33,10 +35,28 @@ app.use(express.static(path.join(__dirname, 'html')));
 // // Serve HTML files like this -> http://localhost:3000/html/register.html
 // app.use('/html',express.static(path.join(__dirname, 'html'))); 
 
+// AWS S3 configuration
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION
+});
+
+const s3 = new AWS.S3();
+
 // to handle file uploads (like images).
 // It tells Multer to save any uploaded files into the uploads folder in your project.
 // You use upload in your routes to accept and store files sent by users.
-const upload = multer({ dest: path.join(__dirname, 'uploads/') }); 
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: process.env.AWS_BUCKET_NAME,
+    acl: 'public-read', // or 'private'
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString() + '-' + file.originalname);
+    }
+  })
+}); 
 
 // MongoDB connection
 const mongoUrl = process.env.MONGO_URL;
@@ -65,5 +85,7 @@ MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
   .catch(err => {
     console.error('Failed to connect to MongoDB Atlas', err);
   });
+
+module.exports = { upload };
 
 

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,13 +19,15 @@
   "homepage": "https://github.com/Htet-Kaung-San/Universities-in-Busan#readme",
   "description": "",
   "dependencies": {
+    "aws-sdk": "^2.1692.0",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
     "mongodb": "^6.16.0",
-    "multer": "^2.0.0"
+    "multer": "^2.0.1",
+    "multer-s3": "^3.0.1"
   },
   "engines": {
     "node": "20.x"
