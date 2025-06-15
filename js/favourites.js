@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const container = document.querySelector(".universities-container");
   let universities = [];
 
-  // Get logged-in user's favourites
   const userRes = await fetch('/api/me');
   const userData = await userRes.json();
 
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     return;
   }
 
-  // Fetch details for each favourite university
   universities = await Promise.all(
     userData.user.favourites.map(id =>
       fetch(`/api/universities/${id}`).then(res => res.json())
@@ -46,6 +44,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 
-  // Initial render
   renderUniversities(universities);
 });
