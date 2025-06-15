@@ -50,11 +50,11 @@ MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
 
     // Routes
     const authRoutes = require('./routes/auth')(db); // let auth routes use db
-    const universityRoutes = require('./routes/universities')(db); // let universities routes use db
+    const universityRoutes = require('./routes/universities')(db);
     const adminRoutes = require('./routes/admin')(db);
 
     app.use(authRoutes); // add routes to express app
-    app.use(universityRoutes); // add routes to express app
+    app.use(universityRoutes);
     app.use(adminRoutes);
 
     // Start server
