@@ -132,7 +132,7 @@ input[type="checkbox"] {
 .password-container input[type="password"],
 .password-container input[type="text"] {
   width: 100%;
-  padding-right: 40px; /* space for the icon */
+  padding-right: 40px;
 }
 
 .toggle-password {

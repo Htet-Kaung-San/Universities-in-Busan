@@ -54,17 +54,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", async function () {
-  // University count
   const uniRes = await fetch('/api/admin/universities/count');
   const uniData = await uniRes.json();
   document.getElementById('total-universities-count').textContent = uniData.count;
 
-  // User count (excluding admin)
   const userRes = await fetch('/api/admin/users/count');
   const userData = await userRes.json();
   document.getElementById('total-users-count').textContent = userData.count;
 
-  // Fetch recent activities
   const res = await fetch('/api/admin/activities');
   const activities = await res.json();
 
@@ -73,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error("No <tbody> found in recent-activity table!");
     return;
   }
-  tbody.innerHTML = ""; // Clear previous rows before adding new ones
+  tbody.innerHTML = "";
 
   activities.forEach(act => {
     const tr = document.createElement('tr');

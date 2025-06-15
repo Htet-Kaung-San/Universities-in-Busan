@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(html => {
       document.getElementById("admin-sidebar").innerHTML = html;
 
-      // Highlight the active sidebar link
       const path = window.location.pathname;
       const sidebarLinks = document.querySelectorAll("#admin-sidebar a[href]");
       sidebarLinks.forEach(link => {
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // Add logout handler
       const logoutBtn = document.getElementById("admin-logout");
       if (logoutBtn) {
         logoutBtn.addEventListener("click", function (e) {

@@ -7,7 +7,6 @@ module.exports = (db) => {
   const router = express.Router();
   const upload = multer({ dest: path.join(__dirname, '../uploads/') });
 
-  // Create university
   router.post('/register-university', upload.fields([
     { name: 'logo', maxCount: 1 },
     { name: 'campus_photos', maxCount: 5 }
@@ -17,7 +16,6 @@ module.exports = (db) => {
       const logo = req.files['logo'] ? req.files['logo'][0].filename : null;
       const campusPhotos = req.files['campus_photos'] ? req.files['campus_photos'].map(f => f.filename) : [];
 
-      // Auto-approve if admin, else require approval
       let approved = false;
       if (req.session.user && req.session.user.user_type === 'admin') {
         approved = true;
@@ -36,7 +34,6 @@ module.exports = (db) => {
         createdAt: new Date()
       });
 
-      // Log the activity
       if (req.session && req.session.user) {
         await db.collection('activities').insertOne({
           activity: "University Registration",
@@ -48,14 +45,13 @@ module.exports = (db) => {
         });
       }
 
-      res.redirect('/index.html'); // or wherever you want to redirect
+      res.redirect('/index.html');
     } catch (err) {
       console.error(err);
       res.status(500).send('Failed to register university.');
     }
   });
 
-  // Get all approved universities
   router.get('/api/universities', async (req, res) => {
     try {
       const universities = await db.collection('universities').find({ approved: true }).toArray();
@@ -66,7 +62,6 @@ module.exports = (db) => {
     }
   });
 
-  // Get all universities (admin)
   router.get('/api/admin/universities', async (req, res) => {
     try {
       const universities = await db.collection('universities').find({}).toArray();
@@ -77,7 +72,6 @@ module.exports = (db) => {
     }
   });
 
-  // Count all universities (admin)
   router.get('/api/admin/universities/count', async (req, res) => {
     try {
       const count = await db.collection('universities').countDocuments();
@@ -87,7 +81,6 @@ module.exports = (db) => {
     }
   });
 
-  // Approve/unapprove a university (admin)
   router.patch('/api/admin/universities/:id/approve', async (req, res) => {
     try {
       const id = req.params.id;
@@ -97,7 +90,6 @@ module.exports = (db) => {
         { $set: { approved: !!approved } }
       );
 
-      // Log the approval activity if approved and user is admin
       if (approved && req.session.user && req.session.user.user_type === 'admin') {
         await db.collection('activities').insertOne({
           activity: "University Approval",
@@ -108,7 +100,6 @@ module.exports = (db) => {
           actionType: "Approve"
         });
       }
-      // Log the disapproval activity if not approved and user is admin
       else if (!approved && req.session.user && req.session.user.user_type === 'admin') {
         await db.collection('activities').insertOne({
           activity: "University Disapproval",
@@ -127,7 +118,6 @@ module.exports = (db) => {
     }
   });
 
-  // Get a single approved university by ID
   router.get('/api/universities/:id', async (req, res) => {
     try {
       const university = await db.collection('universities').findOne({ _id: new ObjectId(req.params.id), approved: true });
@@ -139,9 +129,9 @@ module.exports = (db) => {
   });
 
   router.post('/api/favourites/:universityId', async (req, res) => {
-    console.log('--- /api/favourites/:universityId ROUTE HIT ---'); // 1. Log route hit
+    console.log('--- /api/favourites/:universityId ROUTE HIT ---'); 
 
-    if (!req.session.user || !req.session.user._id) { // 2. More robust session check
+    if (!req.session.user || !req.session.user._id) {
       console.log('Session user or user._id not found:', req.session.user);
       return res.status(401).json({ error: 'Not logged in or session invalid' });
     }
@@ -154,7 +144,7 @@ module.exports = (db) => {
 
     let userId;
     try {
-      userId = new ObjectId(userIdString); // Ensure userIdString is a valid hex string
+      userId = new ObjectId(userIdString);
     } catch (error) {
       console.error('Error creating ObjectId for userId:', error.message);
       return res.status(400).json({ error: 'Invalid user ID format' });
@@ -168,7 +158,7 @@ module.exports = (db) => {
       }
       console.log('User found:', JSON.stringify({ _id: user._id, email: user.email, favourites: user.favourites }, null, 2)); // 4. Log user before update
 
-      const currentFavourites = (user.favourites || []).map(String); // Ensure comparison with strings
+      const currentFavourites = (user.favourites || []).map(String);
       console.log('Current favourites (as strings):', currentFavourites);
 
       let updateOperation;
@@ -176,22 +166,20 @@ module.exports = (db) => {
         updateOperation = { $pull: { favourites: universityId } };
         console.log('Operation: $pull (remove from favourites)');
       } else {
-        updateOperation = { $addToSet: { favourites: universityId } }; // $addToSet prevents duplicates
+        updateOperation = { $addToSet: { favourites: universityId } };
         console.log('Operation: $addToSet (add to favourites)');
       }
-      console.log('Update operation object:', JSON.stringify(updateOperation, null, 2)); // 5. Log update object
+      console.log('Update operation object:', JSON.stringify(updateOperation, null, 2));
 
       const updateResult = await db.collection('users').updateOne({ _id: userId }, updateOperation);
-      console.log('MongoDB updateOne result:', JSON.stringify(updateResult, null, 2)); // 6. Log update result
+      console.log('MongoDB updateOne result:', JSON.stringify(updateResult, null, 2));
 
-      if (updateResult.modifiedCount > 0 || (updateResult.matchedCount > 0 && updateOperation.$addToSet && !currentFavourites.includes(universityId)) ) { // Check if modified or if added to set successfully
-        const updatedUser = await db.collection('users').findOne({ _id: userId }); // 7. Fetch and log user after update
+      if (updateResult.modifiedCount > 0 || (updateResult.matchedCount > 0 && updateOperation.$addToSet && !currentFavourites.includes(universityId)) ) {
+        const updatedUser = await db.collection('users').findOne({ _id: userId });
         console.log('User after update:', JSON.stringify({ _id: updatedUser._id, email: updatedUser.email, favourites: updatedUser.favourites }, null, 2));
         res.json({ success: true, message: 'Favourites updated.' });
       } else if (updateResult.matchedCount > 0 && updateOperation.$pull && !currentFavourites.includes(universityId)) {
-        // This case means we tried to pull an item that wasn't there (after our initial check).
-        // Or if $addToSet was used for an item already present (though $addToSet handles this gracefully by not modifying).
-        console.log('No modification needed or item not found for $pull / item already present for $addToSet.');
+                console.log('No modification needed or item not found for $pull / item already present for $addToSet.');
         const updatedUser = await db.collection('users').findOne({ _id: userId });
         console.log('User after (no actual modification):', JSON.stringify({ _id: updatedUser._id, email: updatedUser.email, favourites: updatedUser.favourites }, null, 2));
         res.json({ success: true, message: 'No change in favourites needed.' });

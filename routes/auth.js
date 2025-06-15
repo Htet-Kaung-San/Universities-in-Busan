@@ -5,7 +5,6 @@ const { ObjectId } = require('mongodb');
 const router = express.Router();
 
 module.exports = (db) => {
-  // ==== Helper Functions ====
 
   function renderRegistrationError(res, message) { // users will normally see register page but if the registe page also fails it will send the styled error message
     res.sendFile(path.join(__dirname, 'html', 'register.html'), {}, function (err) {
@@ -14,7 +13,6 @@ module.exports = (db) => {
       }
     });
   }
-
 
   function validateRegistrationInput(data) {
     const { fullname, email, password, confirm_password, terms, user_type } = data;
@@ -34,8 +32,6 @@ module.exports = (db) => {
     return email && password;
   }
 
-  // ==== Routes ====
-  // --- Register ---
   router.post('/register', async (req, res) => {
     const error = validateRegistrationInput(req.body);
     if (error) {
@@ -67,7 +63,6 @@ module.exports = (db) => {
         favourites: []
       });
 
-      // Log the registration activity
       await db.collection('activities').insertOne({
         activity: "New Account",
         performedBy: email,
@@ -84,7 +79,6 @@ module.exports = (db) => {
     }
   });
 
-  // --- Login ---
   router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -105,11 +99,10 @@ module.exports = (db) => {
         user_type: user.user_type
       };
 
-      // Log the admin login activity
       await db.collection('activities').insertOne({
         activity: "Log In",
         performedBy: user.email,
-        userType: user.user_type, // <-- add this line
+        userType: user.user_type,
         ip: req.ip,
         datetime: new Date(),
         actionType: "Log in"
@@ -122,13 +115,10 @@ module.exports = (db) => {
     }
   });
 
-  // --- Logout ---
   router.get('/logout', async (req, res) => {
-    // Save user info before destroying session
     const user = req.session.user;
     const ip = req.ip;
 
-    // Log the logout activity if user info exists
     if (user) {
       await req.app.locals.db.collection('activities').insertOne({
         activity: "Log Out",
@@ -146,7 +136,6 @@ module.exports = (db) => {
     });
   });
 
-  // --- Session Info ---
   router.get('/api/me', async (req, res) => {
     if (req.session && req.session.user) {
       try {
@@ -171,7 +160,6 @@ module.exports = (db) => {
     }
   });
 
-  // --- Check Email ---
   router.get('/check-email', async (req, res) => {
     const { email } = req.query;
     if (!email) return res.json({ exists: false });
@@ -185,7 +173,6 @@ module.exports = (db) => {
     }
   });
 
-  // --- Add to Favourites ---
   router.post('/api/favourites', async (req, res) => {
     if (!req.session || !req.session.user) {
       return res.status(401).json({ message: 'Not logged in' });
@@ -197,7 +184,7 @@ module.exports = (db) => {
     try {
       await db.collection('users').updateOne(
         { email: req.session.user.email },
-        { $addToSet: { favourites: universityId } } // $addToSet prevents duplicates
+        { $addToSet: { favourites: universityId } }
       );
       res.json({ message: 'Added to favourites' });
     } catch (err) {
@@ -206,7 +193,6 @@ module.exports = (db) => {
     }
   });
 
-  // --- Remove from Favourites ---
   router.delete('/api/favourites', async (req, res) => {
     if (!req.session || !req.session.user) {
       return res.status(401).json({ message: 'Not logged in' });
@@ -227,12 +213,9 @@ module.exports = (db) => {
     }
   });
 
-  // --- Admin: Get All Users ---
   router.get('/api/admin/users', async (req, res) => {
     try {
-      // Get all users, sorted by creation order
       const users = await db.collection('users').find().sort({ _id: 1 }).toArray();
-      // Exclude the first user (admin)
       const usersExcludingFirst = users.slice(1);
       res.json(usersExcludingFirst);
     } catch (err) {
@@ -241,7 +224,6 @@ module.exports = (db) => {
     }
   });
 
-  // --- Admin: Get Single User by ID ---
   router.get('/api/admin/user/:id', async (req, res) => {
     try {
       const user = await db.collection('users').findOne({ _id: new ObjectId(req.params.id) });
@@ -253,12 +235,9 @@ module.exports = (db) => {
     }
   });
 
-  // --- Admin: Get Users Count ---
   router.get('/api/admin/users/count', async (req, res) => {
     try {
-      // Get all users, sorted by creation order
       const users = await db.collection('users').find().sort({ _id: 1 }).toArray();
-      // Exclude the first user (admin)
       const count = users.length > 1 ? users.length - 1 : 0;
       res.json({ count });
     } catch (err) {

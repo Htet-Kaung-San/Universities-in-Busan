@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var header = document.querySelector(".header-nav-bar"); // Use querySelector to get one element
+    var header = document.querySelector(".header-nav-bar");
 
     header.innerHTML = `
     <div class="logo">
@@ -41,18 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(res => res.json())
     .then(data => {
       if (data.loggedIn) {
-        // Hide nav links and hamburger menu on mobile
         document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'none');
         document.querySelector('.nav-profile-dropdown').style.display = 'flex';
-        header.classList.add('logged-in'); // <-- Add this line
-
-        // Set avatar image based on user type
+        header.classList.add('logged-in'); 
         let imgSrc = "img/user_profiles/normal_user.png";
         if (data.user.user_type === "university_personnel") imgSrc = "img/user_profiles/university_personnel.png";
         if (data.user.user_type === "admin") imgSrc = "img/user_profiles/admin.png";
         profileAvatar.src = imgSrc;
 
-        // Show Dashboard/Register a University if applicable
         if (data.user.user_type === "admin") {
           document.querySelector('.nav-dashboard').style.display = 'block';
         }
@@ -60,10 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
           document.querySelector('.nav-register-university').style.display = 'block';
         }
       } else {
-        // Show nav links and hamburger menu
         document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'block');
         document.querySelector('.nav-profile-dropdown').style.display = 'none';
-        header.classList.remove('logged-in'); // <-- Add this line
+        header.classList.remove('logged-in');
       }
     });
 
@@ -71,10 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       fetch('/logout', { method: 'GET' })
         .then(() => {
-          // After logout, show Register/Log In and hide Profile/Log Out
           document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'block');
           document.querySelector('.nav-profile-dropdown').style.display = 'none';
-          window.location.href = 'index.html'; // Optional: redirect to home
+          window.location.href = 'index.html'; 
         });
     });
 
@@ -87,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
         e.stopPropagation();
         profileMenu.style.display = profileMenu.style.display === 'flex' ? 'none' : 'flex';
       });
-      // Hide menu when clicking outside
       document.addEventListener('click', function() {
         profileMenu.style.display = 'none';
       });
