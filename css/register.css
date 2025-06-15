@@ -2,10 +2,6 @@
 
 body {
   background-color: var(--background-color);
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  /* min-height: 100vh; */
 }
 
 .register-wrapper {
@@ -125,7 +121,7 @@ transition: var(--border) 0.2s;
 .dropdown-container select:focus {
 border-color: var(--black-color);
 outline: none;
-/* border: solid red 2px; */
+/* ; */
 }
 
 #error-message {
@@ -147,7 +143,7 @@ outline: none;
 .password-container input[type="password"],
 .password-container input[type="text"] {
   width: 100%;
-  padding-right: 40px; /* space for the icon */
+  padding-right: 40px;
 }
 
 .toggle-password {
