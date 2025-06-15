@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     const universityId = params.get('id');
     if (!universityId) return;
   
-    // Fetch both university details and user info in parallel
     const [uniRes, userRes] = await Promise.all([
       fetch(`/api/universities/${universityId}`),
       fetch('/api/me')
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     const u = await uniRes.json();
     const userData = await userRes.json();
   
-    // Render university details
     const est = u.established ? `<div class="uni-details-est">Established in ${u.established}</div>` : '';
     let campusPhotosHtml = '';
     if (u.campusPhotos && u.campusPhotos.length > 0) {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', async function() {
       `;
     }
   
-    // Determine if this university is in user's favourites
     let starClass = "fa-regular";
     if (
       userData.loggedIn &&
