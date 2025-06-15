@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         card.appendChild(img);
         card.appendChild(name);
 
-        // Add click event to show modal with details
         card.addEventListener('click', function() {
           window.location.href = `university_details.html?id=${university._id}`;
         });
@@ -38,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         universities = data;
         renderUniversities(universities);
-        // Update the registered universities count
         document.getElementById('registered-universities-count').textContent =
           universities.length + '+ Registered Institutions';
       })
@@ -59,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
       renderUniversities(filtered);
     });
 
-    // Optional: Enable live search as you type
     searchInput.addEventListener('input', function () {
       const query = searchInput.value.trim().toLowerCase();
       const filtered = universities.filter(u =>
