@@ -121,7 +121,6 @@ transition: var(--border) 0.2s;
 .dropdown-container select:focus {
 border-color: var(--black-color);
 outline: none;
-/* ; */
 }
 
 #error-message {
