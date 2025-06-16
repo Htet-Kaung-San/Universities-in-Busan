@@ -142,20 +142,33 @@ Universities-in-Busan/
    cd Universities-in-Busan
    ```
 2. **Install dependencies:**
-   ```sh
-   npm install
-   ```
-3. **Set up environment variables:**
-   - Create a `.env` file in the `server` directory.
-   - Add your MongoDB URI, AWS credentials, and other config variables.
+    Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 
-4. **Run the application:**
+    The following dependencies are required and will be installed automatically with `npm install`:
+
+    - express
+    - body-parser
+    - dotenv
+    - mongodb
+    - aws-sdk
+    - multer
+    - multer-s3
+    - express-session
+    - path (built-in Node.js module)
+
+    All dependencies are listed in `package.json`.  
+    To install them, simply run:
+    ```sh
+    npm install
+    ```
+3. **Run the application:**
    ```sh
    npm run dev
    ```
-5. **Access the app:**
-   - Server: `http://localhost:3000`
-
+4. **Access the app:**
+   ```sh
+   http://localhost:3000
+   ```
 ---
 
 ## Deployment
