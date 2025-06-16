@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     header.innerHTML = `
     <div class="logo">
-        <img src="img/university.svg" alt="">
+        <img src="img/static/website_logo.svg" alt="">
          <a href="index.html">Study in Busan</a>
     </div>
 
