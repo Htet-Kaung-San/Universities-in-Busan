@@ -2,44 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard</title>
+  <title>Admin Scholarships</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../css/nav_bar.css">
   <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/admin_dashboard.css"/> 
+  <link rel="stylesheet" href="../css/admin_dashboard.css"/>
   <script src="../js/insert_nav_bar.js" defer></script>
-  <script src="../js/admin_universities.js" defer></script>
+  <script src="../js/admin_scholarships.js" defer></script>
   <script src="../js/insert_admin_sidebar.js" defer></script>
 </head>
 <body>
-
   <header class="header-nav-bar"></header>
 
   <div class="container">
     <div id="admin-sidebar"></div>
     <main class="main-content">
-
       <section class="recent-activity">
-        <h2>New University Submissions</h2>
+        <h2>New Scholarship Submissions</h2>
 
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>University</th>
+                <th>Scholarship</th>
+                <th>Provider</th>
                 <th>Status</th>
-                <th>Last Updated</th>
+                <th>Deadline</th>
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody id="universities-tbody">
-            </tbody>
+            <tbody id="scholarships-tbody"></tbody>
           </table>
         </div>
-
       </section>
     </main>
   </div>
-
 </body>
 </html>

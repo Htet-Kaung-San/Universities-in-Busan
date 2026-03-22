@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About us</a>
+            <a href="scholarships.html">Scholarships</a>
             <a href="register.html" class="nav-register">Register</a>
             <a href="login.html" class="nav-login">Log In</a>
         </div>
@@ -19,10 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="nav-profile-menu" style="display:none;">
                 <a href="index.html" class="mobile-only">Home</a>
                 <a href="about.html" class="mobile-only">About us</a>
+                <a href="scholarships.html" class="mobile-only">Scholarships</a>
                 <a href="profile.html">Profile</a>
                 <a href="favourites.html">Favourites</a>
                 <a href="admin_dashboard.html" class="nav-dashboard" style="display:none;">Dashboard</a>
                 <a href="register_university.html" class="nav-register-university" style="display:none;">Register a University</a>
+                <a href="register_scholarship.html" class="nav-register-scholarship" style="display:none;">Register a Scholarship</a>
                 <a href="#" class="nav-logout">Log Out</a>
             </div>
         </div>
@@ -54,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (["admin", "university_personnel"].includes(data.user.user_type)) {
           document.querySelector('.nav-register-university').style.display = 'block';
+          document.querySelector('.nav-register-scholarship').style.display = 'block';
         }
       } else {
         document.querySelectorAll('.nav-register, .nav-login').forEach(btn => btn.style.display = 'block');

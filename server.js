@@ -9,7 +9,7 @@ const multerS3 = require('multer-s3');
 const session = require('express-session'); // lets app remember users
 
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 
 // Middleware: parse form data and JSON - since most of the data transfer is done in json format,
 // they help convert the data when transfering and extracting the data from the json when receiving
@@ -71,10 +71,12 @@ MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
     // Routes
     const authRoutes = require('./routes/auth')(db); // let auth routes use db
     const universityRoutes = require('./routes/universities')(db);
+    const scholarshipRoutes = require('./routes/scholarships')(db);
     const adminRoutes = require('./routes/admin')(db);
 
     app.use(authRoutes); // add routes to express app
     app.use(universityRoutes);
+    app.use(scholarshipRoutes);
     app.use(adminRoutes);
 
     // Start server
@@ -87,5 +89,3 @@ MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
   });
 
 module.exports = { upload };
-
-

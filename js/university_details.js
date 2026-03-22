@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     const params = new URLSearchParams(window.location.search);
     const universityId = params.get('id');
     if (!universityId) return;
+
+    function resolveAssetUrl(asset, fallback) {
+      if (!asset) return fallback;
+      if (/^https?:\/\//i.test(asset)) return asset;
+      return `/uploads/${asset}`;
+    }
   
     const [uniRes, userRes] = await Promise.all([
       fetch(`/api/universities/${universityId}`),
@@ -18,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function() {
           <h2>Campus Photos</h2>
           <div class="uni-campus-photos">
             ${u.campusPhotos.map(photo => 
-              `<img src="/uploads/${photo}" alt="Campus Photo" class="campus-photo-img">`
+              `<img src="${resolveAssetUrl(photo, 'default_university.png')}" alt="Campus Photo" class="campus-photo-img">`
             ).join('')}
           </div>
         </div>
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById('university-details').innerHTML = `
       <div class="uni-details-header">
         <div class="uni-details-image_title-group">
-          <img class="uni-details-img" src="${u.logo ? '/uploads/' + u.logo : (u.image || 'default_university.png')}" alt="${u.name}">
+          <img class="uni-details-img" src="${resolveAssetUrl(u.logo, u.image || 'default_university.png')}" alt="${u.name}">
           <div class="uni-details-title-group">
           <h1>${u.name}</h1>
           <div class="uni-details-location">${u.location || ''}</div>

@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchButton = document.querySelector('.search-container-box button');
     let universities = [];
 
+    function resolveAssetUrl(asset, fallback) {
+      if (!asset) return fallback;
+      if (/^https?:\/\//i.test(asset)) return asset;
+      return `/uploads/${asset}`;
+    }
+
     function renderUniversities(list) {
       container.innerHTML = '';
       if (list.length === 0) {
@@ -15,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         card.classList.add("university-container");
 
         const img = document.createElement("img");
-        img.src = university.logo ? `/uploads/${university.logo}` : (university.image || "default_university.png");
+        img.src = resolveAssetUrl(university.logo, university.image || "default_university.png");
         img.alt = university.name;
 
         const name = document.createElement("div");

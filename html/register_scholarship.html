@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register a Scholarship</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nav_bar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/register_scholarship.css">
+  <script src="../js/insert_footer.js" defer></script>
+  <script src="../js/insert_nav_bar.js" defer></script>
+  <script src="../js/register_scholarship.js" defer></script>
+</head>
+<body>
+  <header class="header-nav-bar"></header>
+
+  <main class="scholarship-shell">
+    <section class="scholarship-form-panel">
+      <div class="form-header">
+        <h2>Register a Scholarship</h2>
+      </div>
+
+      <form id="scholarshipForm" method="POST" action="/register-scholarship">
+        <div class="form-grid">
+          <label class="full-span">
+            <span>Scholarship Title</span>
+            <input type="text" id="title" name="title" placeholder="Busan Global Excellence Scholarship" required>
+          </label>
+
+          <label>
+            <span>Degree Level</span>
+            <select id="degreeLevel" name="degreeLevel" required>
+              <option value="">Select level</option>
+              <option>Undergraduate</option>
+              <option>Graduate</option>
+              <option>Postgraduate Research</option>
+              <option>Exchange / Visiting</option>
+              <option>Open to Multiple Levels</option>
+            </select>
+          </label>
+
+          <label class="full-span">
+            <span>Description</span>
+            <textarea id="description" name="description" rows="4" placeholder="Introduce the scholarship, who it is for, and what makes it valuable." required></textarea>
+          </label>
+
+          <label>
+            <span>Source URL</span>
+            <input type="url" id="sourceUrl" name="sourceUrl" placeholder="https://example.edu/scholarship" required>
+          </label>
+
+          <label>
+            <span>Host Institution</span>
+            <input type="text" id="hostInstitution" name="hostInstitution" placeholder="Pusan National University" required>
+          </label>
+
+          <label>
+            <span>Field of Study</span>
+            <input type="text" id="fieldOfStudy" name="fieldOfStudy" placeholder="Engineering, Business, Computer Science" required>
+          </label>
+
+          <label>
+            <span>Deadline</span>
+            <input type="date" id="deadline" name="deadline" required>
+          </label>
+
+          <label>
+            <span>Engagement Type</span>
+            <input type="text" id="engagementType" name="engagementType" placeholder="Full-time, Exchange, Research" required>
+          </label>
+
+          <label class="full-span">
+            <span>Eligibility</span>
+            <textarea id="eligibility" name="eligibility" rows="5" placeholder="One requirement per line. Example:&#10;International students only&#10;Minimum GPA 3.3&#10;Accepted to a Busan-based program" required></textarea>
+          </label>
+
+          <label class="full-span">
+            <span>Benefits</span>
+            <textarea id="benefits" name="benefits" rows="5" placeholder="One benefit per line. Example:&#10;Full tuition waiver&#10;Monthly living allowance&#10;Priority dormitory placement" required></textarea>
+          </label>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit">Submit Scholarship</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div class="footer"></div>
+</body>
+</html>
